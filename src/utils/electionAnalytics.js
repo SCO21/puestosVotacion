@@ -124,8 +124,24 @@ export const calculateMarkerRadius = (totalVotes = 0, maxVotes = 15000) => {
  * Paleta fija de colores para comparación de hasta 3 candidatos.
  * (cian, ámbar, violeta) — alto contraste sobre el mapa oscuro.
  */
-export const CANDIDATE_COLORS = ['#22d3ee', '#f59e0b', '#a855f7'];
+export const CANDIDATE_COLORS = ['#22d3ee', '#f59e0b', '#a855f7']; // paleta de respaldo
 export const NO_DATA_COLOR = '#475569'; // gris para puestos sin datos / sin ninguno de los 3
+
+// Colores FIJOS por candidato (independiente del orden de selección)
+const FIXED_CANDIDATE_COLORS = [
+  { match: 'TONCEL', color: '#ef4444' }, // rojo
+  { match: 'MEZA', color: '#3b82f6' },   // azul
+  { match: 'BARRIOS', color: '#f1e100' } // anaranjado
+];
+
+/** Color de un candidato: fijo si es conocido, si no cae en la paleta por índice. */
+export const colorForCandidate = (name, index = 0) => {
+  const u = (name || '').toUpperCase();
+  for (const f of FIXED_CANDIDATE_COLORS) {
+    if (u.includes(f.match)) return f.color;
+  }
+  return CANDIDATE_COLORS[index % CANDIDATE_COLORS.length];
+};
 
 /**
  * Compara varios candidatos dentro de un puesto.
@@ -147,7 +163,7 @@ export const getComparison = (resultados = [], candidates = []) => {
       name: cand,
       votos,
       pct: totalPuesto > 0 ? ((votos / totalPuesto) * 100).toFixed(1) : '0.0',
-      color: CANDIDATE_COLORS[index] || CANDIDATE_COLORS[0],
+      color: colorForCandidate(cand, index),
       index,
       present: !!match,
     };

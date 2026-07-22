@@ -6,6 +6,7 @@ import {
   getPuestoWinner,
   calculateMarkerRadius,
   CANDIDATE_COLORS,
+  colorForCandidate,
   NO_DATA_COLOR
 } from '../utils/electionAnalytics';
 import { Trophy, MapPin, Users, Award, ChevronRight, Crown, Target } from 'lucide-react';
@@ -68,7 +69,7 @@ export const MapView = ({
             <div key={cand} className="flex items-center gap-2">
               <span
                 className="w-3 h-3 rounded-full inline-block shrink-0 shadow-sm"
-                style={{ backgroundColor: CANDIDATE_COLORS[i], boxShadow: `0 0 6px ${CANDIDATE_COLORS[i]}80` }}
+                style={{ backgroundColor: colorForCandidate(cand, i), boxShadow: `0 0 6px ${colorForCandidate(cand, i)}80` }}
               />
               <span className="text-slate-300 font-medium truncate">{cand}</span>
             </div>
@@ -128,6 +129,9 @@ export const MapView = ({
               <Tooltip direction="top" offset={[0, -radius]} opacity={0.9} sticky>
                 <div className="text-xs font-semibold text-slate-100">
                   {puesto.nombre_puesto}
+                  <div className="text-[10px] text-cyan-300 font-normal">
+                    Zona {puesto.puesto_id?.split('-')[0]} · Puesto {puesto.puesto_id?.split('-')[1]} ({puesto.puesto_id})
+                  </div>
                   <div className="text-[10px] font-normal" style={{ color: compareAll ? GENERAL_COLOR : cmp.color }}>
                     {compareAll
                       ? (hasData ? `${puesto.votos_totales_puesto.toLocaleString()} votos · gana ${winner.candidato_o_lista}` : 'Sin datos E-24')
@@ -160,6 +164,12 @@ export const MapView = ({
                           {puesto.votos_totales_puesto > 0 ? 'Ninguno' : 'Sin datos'}
                         </span>
                       )}
+                    </div>
+                    <div className="mt-1 flex items-center gap-1.5">
+                      <span className="text-[10px] font-bold text-cyan-300 bg-cyan-500/15 border border-cyan-500/30 rounded px-1.5 py-0.5">
+                        Zona {puesto.puesto_id?.split('-')[0]} · Puesto {puesto.puesto_id?.split('-')[1]}
+                      </span>
+                      <span className="text-[10px] text-slate-500 font-mono">{puesto.puesto_id}</span>
                     </div>
                     <p className="text-[11px] text-slate-400 flex items-center gap-1 mt-1">
                       <MapPin className="w-3 h-3 text-cyan-400 shrink-0" />

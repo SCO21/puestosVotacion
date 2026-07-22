@@ -13,7 +13,7 @@ import {
   Plus,
   Sparkles
 } from 'lucide-react';
-import { CANDIDATE_COLORS } from '../utils/electionAnalytics';
+import { CANDIDATE_COLORS, colorForCandidate } from '../utils/electionAnalytics';
 
 export const Navbar = ({
   compareCandidates = [],
@@ -217,7 +217,8 @@ export const Navbar = ({
                         {puesto.nombre_puesto}
                       </div>
                       <div className="text-[11px] text-slate-400 truncate">
-                        {puesto.direccion}
+                        <span className="text-cyan-300 font-semibold">Zona {puesto.puesto_id?.split('-')[0]} · Puesto {puesto.puesto_id?.split('-')[1]}</span>
+                        {' — '}{puesto.direccion}
                       </div>
                     </div>
                   </button>
@@ -243,9 +244,9 @@ export const Navbar = ({
                 <span
                   key={cand}
                   className="flex items-center gap-1 text-[11px] font-bold text-white rounded-lg pl-1.5 pr-1 py-0.5 max-w-[130px]"
-                  style={{ backgroundColor: (CANDIDATE_COLORS[i] || '#22d3ee') + '33', border: `1px solid ${CANDIDATE_COLORS[i] || '#22d3ee'}` }}
+                  style={{ backgroundColor: colorForCandidate(cand, i) + '33', border: `1px solid ${colorForCandidate(cand, i)}` }}
                 >
-                  <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: CANDIDATE_COLORS[i] || '#22d3ee' }} />
+                  <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: colorForCandidate(cand, i) }} />
                   <span className="truncate">{cand}</span>
                   <span
                     role="button"
@@ -302,8 +303,8 @@ export const Navbar = ({
                         <span
                           className="w-3.5 h-3.5 rounded border shrink-0 flex items-center justify-center"
                           style={{
-                            borderColor: selected ? (CANDIDATE_COLORS[selIdx] || '#22d3ee') : '#475569',
-                            backgroundColor: selected ? (CANDIDATE_COLORS[selIdx] || '#22d3ee') : 'transparent',
+                            borderColor: selected ? colorForCandidate(cand, selIdx) : '#475569',
+                            backgroundColor: selected ? colorForCandidate(cand, selIdx) : 'transparent',
                           }}
                         >
                           {selected && <span className="w-1.5 h-1.5 bg-slate-950 rounded-sm" />}
