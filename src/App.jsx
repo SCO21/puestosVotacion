@@ -198,6 +198,7 @@ export function App() {
       <DetailModal
         puesto={selectedPuestoForModal}
         targetCandidate={targetCandidate}
+        compareCandidates={compareCandidates}
         planillas={planillasCampana}
         onClose={() => setSelectedPuestoForModal(null)}
       />

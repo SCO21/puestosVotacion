@@ -14,6 +14,7 @@ import { getSortedResults, getTrafficLightStatus } from '../utils/electionAnalyt
 export const DetailModal = ({
   puesto,
   targetCandidate = '',
+  compareCandidates = [],
   planillas = [],
   onClose
 }) => {
@@ -22,6 +23,13 @@ export const DetailModal = ({
   const sortedResults = getSortedResults(puesto.resultados);
   const traffic = getTrafficLightStatus(puesto.resultados, targetCandidate);
   const leaderInfo = planillas.find(p => p.puesto_asignado_id === puesto.puesto_id);
+
+  // Total de votos de los candidatos seleccionados (o de todos si no hay selección)
+  const selNames = (compareCandidates.length ? compareCandidates : (puesto.resultados || []).map(r => r.candidato_o_lista))
+    .map(c => c.trim().toUpperCase());
+  const selectedTotal = (puesto.resultados || [])
+    .filter(r => selNames.includes(r.candidato_o_lista?.trim().toUpperCase()))
+    .reduce((a, r) => a + (r.votos || 0), 0);
 
   return (
     <div className="fixed inset-0 z-[2000] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
@@ -61,8 +69,8 @@ export const DetailModal = ({
           {/* Top Summary Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div className="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
-              <div className="text-[10px] font-bold uppercase text-slate-400">Votos Totales Puesto</div>
-              <div className="text-lg font-extrabold text-white">{puesto.votos_totales_puesto.toLocaleString()}</div>
+              <div className="text-[10px] font-bold uppercase text-slate-400">Votos candidatos seleccionados</div>
+              <div className="text-lg font-extrabold text-white">{selectedTotal.toLocaleString()}</div>
             </div>
 
             <div className="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
