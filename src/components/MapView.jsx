@@ -1,12 +1,14 @@
 import React, { useMemo, useEffect } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup, Tooltip, useMap } from 'react-leaflet';
-import { 
-  getTrafficLightStatus, 
-  getSortedResults, 
-  getPuestoWinner, 
-  calculateMarkerRadius 
+import {
+  getComparison,
+  getSortedResults,
+  getPuestoWinner,
+  calculateMarkerRadius,
+  CANDIDATE_COLORS,
+  NO_DATA_COLOR
 } from '../utils/electionAnalytics';
-import { Trophy, MapPin, Users, Award, ChevronRight } from 'lucide-react';
+import { Trophy, MapPin, Users, Award, ChevronRight, Crown, Target } from 'lucide-react';
 
 // Controller to auto-fly & center map when a user searches or selects a puesto
 const MapController = ({ focusedPuesto }) => {
@@ -26,6 +28,7 @@ const MapController = ({ focusedPuesto }) => {
 
 export const MapView = ({
   puestos = [],
+  compareCandidates = [],
   targetCandidate = '',
   planillas = [],
   maxVotesGlobal = 15000,
@@ -34,6 +37,8 @@ export const MapView = ({
 }) => {
   // Center of Cartagena de Indias
   const cartagenaCenter = [10.3997, -75.5144];
+  const compareAll = compareCandidates.length === 0;
+  const GENERAL_COLOR = '#0ea5e9';
 
   // Map leaders to puesto_id for quick lookup inside popup
   const leadersMap = useMemo(() => {
@@ -48,26 +53,33 @@ export const MapView = ({
     <div className="w-full h-[550px] lg:h-[650px] rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative">
       
       {/* Legend Badge Overlay */}
-      <div className="absolute bottom-4 left-4 z-[1000] bg-slate-900/90 border border-slate-800 rounded-xl p-3 backdrop-blur-md text-xs shadow-xl space-y-2 pointer-events-auto">
-        <div className="font-bold text-white text-[11px] uppercase tracking-wider border-b border-slate-800 pb-1 flex items-center justify-between gap-4">
-          <span>Semáforo: {targetCandidate}</span>
+      <div className="absolute bottom-4 left-4 z-[1000] bg-slate-900/90 border border-slate-800 rounded-xl p-3 backdrop-blur-md text-xs shadow-xl space-y-2 pointer-events-auto max-w-[240px]">
+        <div className="font-bold text-white text-[11px] uppercase tracking-wider border-b border-slate-800 pb-1">
+          {compareAll ? 'Vista general (todos)' : 'Líder por puesto'}
         </div>
         <div className="flex flex-col gap-1.5 text-[11px]">
+          {compareAll && (
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full inline-block shrink-0" style={{ backgroundColor: GENERAL_COLOR }} />
+              <span className="text-slate-300 font-medium">Puesto con datos — ver top en el popup</span>
+            </div>
+          )}
+          {compareCandidates.map((cand, i) => (
+            <div key={cand} className="flex items-center gap-2">
+              <span
+                className="w-3 h-3 rounded-full inline-block shrink-0 shadow-sm"
+                style={{ backgroundColor: CANDIDATE_COLORS[i], boxShadow: `0 0 6px ${CANDIDATE_COLORS[i]}80` }}
+              />
+              <span className="text-slate-300 font-medium truncate">{cand}</span>
+            </div>
+          ))}
           <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50 inline-block" />
-            <span className="text-slate-300 font-medium">1º Lugar (Ganador Local)</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-amber-500 shadow-sm shadow-amber-500/50 inline-block" />
-            <span className="text-slate-300 font-medium">2º o 3º Lugar (Podio)</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full bg-rose-500 shadow-sm shadow-rose-500/50 inline-block" />
-            <span className="text-slate-300 font-medium">Fuera del Top 3 (Crítico)</span>
+            <span className="w-3 h-3 rounded-full inline-block shrink-0" style={{ backgroundColor: NO_DATA_COLOR }} />
+            <span className="text-slate-400 font-medium">Sin datos / ninguno</span>
           </div>
         </div>
         <div className="pt-1 text-[10px] text-slate-500 border-t border-slate-800">
-          * Tamaño del círculo = Votos totales del puesto
+          * Color = candidato con más votos en el puesto<br />* Tamaño del círculo = votos totales del puesto
         </div>
       </div>
 
@@ -88,12 +100,17 @@ export const MapView = ({
 
         {/* CircleMarkers for each polling post */}
         {puestos.map((puesto) => {
-          const traffic = getTrafficLightStatus(puesto.resultados, targetCandidate);
+          const cmp = getComparison(puesto.resultados, compareCandidates);
           const radius = calculateMarkerRadius(puesto.votos_totales_puesto, maxVotesGlobal);
           const winner = getPuestoWinner(puesto.resultados);
           const sortedTop3 = getSortedResults(puesto.resultados).slice(0, 3);
           const leaderInfo = leadersMap.get(puesto.puesto_id);
           const isFocused = focusedPuesto && focusedPuesto.puesto_id === puesto.puesto_id;
+          const hasLeader = !!cmp.leader;
+          const hasData = (puesto.votos_totales_puesto || 0) > 0;
+          // Sin candidatos seleccionados => vista general (color único por votos totales)
+          const markerColor = compareAll ? (hasData ? GENERAL_COLOR : NO_DATA_COLOR) : cmp.color;
+          const markerOpacity = compareAll ? (hasData ? 0.75 : 0.35) : (hasLeader ? 0.8 : 0.45);
 
           return (
             <CircleMarker
@@ -101,18 +118,22 @@ export const MapView = ({
               center={[puesto.lat, puesto.lng]}
               radius={isFocused ? radius + 6 : radius}
               pathOptions={{
-                color: isFocused ? '#38bdf8' : traffic.color,
-                fillColor: traffic.color,
-                fillOpacity: isFocused ? 0.95 : 0.75,
-                weight: isFocused ? 4 : (traffic.rank === 1 ? 3 : 1.5),
+                color: isFocused ? '#38bdf8' : markerColor,
+                fillColor: markerColor,
+                fillOpacity: isFocused ? 0.95 : markerOpacity,
+                weight: isFocused ? 4 : (compareAll ? 1.2 : (hasLeader ? 2 : 1)),
               }}
             >
               {/* Tooltip on Hover */}
               <Tooltip direction="top" offset={[0, -radius]} opacity={0.9} sticky>
                 <div className="text-xs font-semibold text-slate-100">
                   {puesto.nombre_puesto}
-                  <div className="text-[10px] text-cyan-400 font-normal">
-                    {puesto.votos_totales_puesto > 0 ? `${puesto.votos_totales_puesto.toLocaleString()} votos` : 'Puesto Registrado'} | {traffic.statusLabel}
+                  <div className="text-[10px] font-normal" style={{ color: compareAll ? GENERAL_COLOR : cmp.color }}>
+                    {compareAll
+                      ? (hasData ? `${puesto.votos_totales_puesto.toLocaleString()} votos · gana ${winner.candidato_o_lista}` : 'Sin datos E-24')
+                      : (hasLeader
+                          ? `Líder: ${cmp.leader.name} (${cmp.leader.votos.toLocaleString()} · ${cmp.leader.pct}%)`
+                          : (hasData ? 'Ninguno de los seleccionados' : 'Sin datos E-24'))}
                   </div>
                 </div>
               </Tooltip>
@@ -127,9 +148,18 @@ export const MapView = ({
                       <h3 className="font-bold text-sm text-white font-heading leading-snug">
                         {puesto.nombre_puesto}
                       </h3>
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded border shrink-0 ${traffic.badgeBg}`}>
-                        {traffic.statusLabel}
-                      </span>
+                      {hasLeader ? (
+                        <span
+                          className="text-[10px] font-bold px-2 py-0.5 rounded border shrink-0 flex items-center gap-1"
+                          style={{ color: cmp.color, borderColor: cmp.color, backgroundColor: cmp.color + '22' }}
+                        >
+                          <Crown className="w-3 h-3" /> Líder
+                        </span>
+                      ) : (
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded border shrink-0 bg-slate-500/20 text-slate-300 border-slate-500/30">
+                          {puesto.votos_totales_puesto > 0 ? 'Ninguno' : 'Sin datos'}
+                        </span>
+                      )}
                     </div>
                     <p className="text-[11px] text-slate-400 flex items-center gap-1 mt-1">
                       <MapPin className="w-3 h-3 text-cyan-400 shrink-0" />
@@ -154,6 +184,38 @@ export const MapView = ({
                       <div className="text-[10px] text-slate-400">votos</div>
                     </div>
                   </div>
+
+                  {/* Comparación de candidatos seleccionados */}
+                  {cmp.rows.length > 0 && (
+                    <div>
+                      <div className="text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                        <Target className="w-3 h-3 text-cyan-400" />
+                        Comparación ({cmp.rows.length})
+                      </div>
+                      <div className="space-y-1.5">
+                        {[...cmp.rows].sort((a, b) => b.votos - a.votos).map((row) => {
+                          const isLeader = hasLeader && row.index === cmp.leaderIndex && row.votos > 0;
+                          return (
+                            <div
+                              key={row.name}
+                              className="p-1.5 rounded-lg text-xs flex items-center justify-between"
+                              style={{ backgroundColor: row.color + (isLeader ? '2e' : '18'), border: `1px solid ${row.color}${isLeader ? 'aa' : '44'}` }}
+                            >
+                              <div className="flex items-center gap-2 truncate pr-2">
+                                <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: row.color }} />
+                                <span className="truncate font-medium text-slate-100">{row.name}</span>
+                                {isLeader && <Crown className="w-3 h-3 shrink-0" style={{ color: row.color }} />}
+                              </div>
+                              <div className="text-right shrink-0 text-[11px]">
+                                <span className="font-semibold text-white">{row.votos.toLocaleString()}</span>
+                                <span className="text-[10px] text-slate-400 ml-1">({row.pct}%)</span>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Top 3 Candidate Ranking */}
                   {sortedTop3.length > 0 && (

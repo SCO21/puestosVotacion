@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import defaultResultados from './data/resultados_oficiales.json';
 import defaultPlanillas from './data/planillas_campana.json';
 import { extractUniqueCandidates } from './utils/electionAnalytics';
@@ -24,15 +24,39 @@ export function App() {
 
   // Dynamic Candidate & Filter Selection
   const allCandidates = useMemo(() => extractUniqueCandidates(resultadosPuestos), [resultadosPuestos]);
-  const [targetCandidate, setTargetCandidate] = useState('');
 
-  // Set default target candidate once candidates are loaded
+  // Comparación de hasta 3 candidatos
+  const MAX_COMPARE = 3;
+  const [compareCandidates, setCompareCandidates] = useState([]);
+
+  // El "candidato principal" es el primero seleccionado (compatibilidad con paneles existentes)
+  const targetCandidate = compareCandidates[0] || '';
+
+  const toggleCandidate = (cand) => {
+    setCompareCandidates(prev => {
+      if (prev.includes(cand)) return prev.filter(c => c !== cand);
+      if (prev.length >= MAX_COMPARE) return prev; // límite de 3
+      return [...prev, cand];
+    });
+  };
+  const removeCandidate = (cand) => setCompareCandidates(prev => prev.filter(c => c !== cand));
+
+  // Seleccionar 3 candidatos por defecto (los más votados) SOLO una vez al cargar.
+  // Si el usuario borra todos, la selección queda vacía = "comparar todos" (vista general).
+  const didInitCandidates = useRef(false);
   useEffect(() => {
-    if (allCandidates.length > 0 && !targetCandidate) {
-      const defaultCand = allCandidates.find(c => c.toUpperCase().includes('MATEO')) || allCandidates[0];
-      setTargetCandidate(defaultCand);
+    if (!didInitCandidates.current && allCandidates.length > 0) {
+      didInitCandidates.current = true;
+      const totals = new Map();
+      resultadosPuestos.forEach(p => (p.resultados || []).forEach(r => {
+        if (r.candidato_o_lista) {
+          totals.set(r.candidato_o_lista, (totals.get(r.candidato_o_lista) || 0) + (r.votos || 0));
+        }
+      }));
+      const top = [...totals.entries()].sort((a, b) => b[1] - a[1]).slice(0, MAX_COMPARE).map(e => e[0]);
+      setCompareCandidates(top.length ? top : allCandidates.slice(0, MAX_COMPARE));
     }
-  }, [allCandidates, targetCandidate]);
+  }, [allCandidates, resultadosPuestos]);
 
   // Filters State & Interactive Map Locator
   const [cargoFilter, setCargoFilter] = useState('TODOS');
@@ -106,8 +130,10 @@ export function App() {
       
       {/* Top Bar Navigation with Interactive Search Locator */}
       <Navbar
-        targetCandidate={targetCandidate}
-        setTargetCandidate={setTargetCandidate}
+        compareCandidates={compareCandidates}
+        toggleCandidate={toggleCandidate}
+        removeCandidate={removeCandidate}
+        maxCompare={MAX_COMPARE}
         allCandidates={allCandidates}
         cargoFilter={cargoFilter}
         setCargoFilter={setCargoFilter}
@@ -136,6 +162,7 @@ export function App() {
             {/* Core Interactive Leaflet Map with Smooth Fly-To Locator */}
             <MapView
               puestos={filteredPuestos}
+              compareCandidates={compareCandidates}
               targetCandidate={targetCandidate}
               planillas={planillasCampana}
               maxVotesGlobal={maxVotesGlobal}

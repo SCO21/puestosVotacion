@@ -121,8 +121,56 @@ export const calculateMarkerRadius = (totalVotes = 0, maxVotes = 15000) => {
 };
 
 /**
+ * Paleta fija de colores para comparación de hasta 3 candidatos.
+ * (cian, ámbar, violeta) — alto contraste sobre el mapa oscuro.
+ */
+export const CANDIDATE_COLORS = ['#22d3ee', '#f59e0b', '#a855f7'];
+export const NO_DATA_COLOR = '#475569'; // gris para puestos sin datos / sin ninguno de los 3
+
+/**
+ * Compara varios candidatos dentro de un puesto.
+ * @param {Array} resultados - Array de { candidato_o_lista, votos }
+ * @param {Array<string>} candidates - Lista (máx 3) de candidatos a comparar
+ * @returns {Object} { rows, leader, leaderIndex, color, totalPuesto }
+ *   rows: [{ name, votos, pct, color, index }] en el orden de selección
+ *   leader: la fila con más votos entre los seleccionados (o null si ninguno tiene votos)
+ *   color: color del líder para pintar el marcador (gris si no hay datos)
+ */
+export const getComparison = (resultados = [], candidates = []) => {
+  const totalPuesto = resultados.reduce((acc, r) => acc + (r.votos || 0), 0);
+  const rows = candidates.map((cand, index) => {
+    const match = resultados.find(
+      r => r.candidato_o_lista?.trim().toUpperCase() === cand.trim().toUpperCase()
+    );
+    const votos = match ? (match.votos || 0) : 0;
+    return {
+      name: cand,
+      votos,
+      pct: totalPuesto > 0 ? ((votos / totalPuesto) * 100).toFixed(1) : '0.0',
+      color: CANDIDATE_COLORS[index] || CANDIDATE_COLORS[0],
+      index,
+      present: !!match,
+    };
+  });
+
+  const anyVotes = rows.some(r => r.votos > 0);
+  let leader = null;
+  if (anyVotes) {
+    leader = rows.reduce((best, r) => (r.votos > best.votos ? r : best), rows[0]);
+  }
+
+  return {
+    rows,
+    leader,
+    leaderIndex: leader ? leader.index : -1,
+    color: leader ? leader.color : NO_DATA_COLOR,
+    totalPuesto,
+  };
+};
+
+/**
  * Extrae la lista de todos los candidatos únicos del dataset.
- * @param {Array} puestos 
+ * @param {Array} puestos
  * @returns {Array} Nombres de candidatos únicos
  */
 export const extractUniqueCandidates = (puestos = []) => {
