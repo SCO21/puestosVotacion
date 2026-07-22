@@ -11,6 +11,7 @@ import {
   X,
   ChevronDown,
   Plus,
+  BarChart3,
   Sparkles
 } from 'lucide-react';
 import { CANDIDATE_COLORS, colorForCandidate } from '../utils/electionAnalytics';
@@ -124,6 +125,18 @@ export const Navbar = ({
               >
                 <Map className="w-3.5 h-3.5" />
                 Mapa & Ubicaciones
+              </button>
+
+              <button
+                onClick={() => setActiveTab('stats')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  activeTab === 'stats'
+                    ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/20'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                <BarChart3 className="w-3.5 h-3.5" />
+                Estadísticas
               </button>
 
               <button

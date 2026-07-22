@@ -11,6 +11,7 @@ import { CandidateRanking } from './components/CandidateRanking';
 import { CampaignAudit } from './components/CampaignAudit';
 import { DataUploader } from './components/DataUploader';
 import { DetailModal } from './components/DetailModal';
+import { StatsPanel } from './components/StatsPanel';
 
 export function App() {
   // Authentication State
@@ -151,7 +152,7 @@ export function App() {
       {/* Main View Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
         
-        {activeTab === 'map' ? (
+        {activeTab === 'map' && (
           <div className="space-y-6 animate-fadeIn">
             {/* KPI Cards Header */}
             <DashboardStats
@@ -176,7 +177,13 @@ export function App() {
               targetCandidate={targetCandidate}
             />
           </div>
-        ) : (
+        )}
+
+        {activeTab === 'stats' && (
+          <StatsPanel puestos={resultadosPuestos} />
+        )}
+
+        {activeTab === 'audit' && (
           <div className="animate-fadeIn">
             {/* Campaign Activistas Audit View */}
             <CampaignAudit
