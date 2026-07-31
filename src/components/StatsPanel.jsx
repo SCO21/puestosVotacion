@@ -10,27 +10,31 @@ import { colorForCandidate, NO_DATA_COLOR } from '../utils/electionAnalytics';
 const pct = (n, d) => (d > 0 ? ((n / d) * 100).toFixed(1) : '0.0');
 const zonaOf = (id) => (id || '').split('-')[0];
 
-export const StatsPanel = ({ puestos = [] }) => {
+export const StatsPanel = ({ puestos = [], compareCandidates = [] }) => {
   const S = useMemo(() => {
     const withData = puestos.filter(p => (p.resultados || []).length > 0);
 
-    // lista de candidatos presentes
-    const names = [];
+    // candidatos presentes en los datos
+    const allNames = [];
     withData.forEach(p => p.resultados.forEach(r => {
-      if (r.candidato_o_lista && !names.includes(r.candidato_o_lista)) names.push(r.candidato_o_lista);
+      if (r.candidato_o_lista && !allNames.includes(r.candidato_o_lista)) allNames.push(r.candidato_o_lista);
     }));
+    // SCOPE: solo los candidatos seleccionados (si hay); si no, todos
+    const sel = compareCandidates.map(c => c.trim().toUpperCase());
+    const names = sel.length ? allNames.filter(n => sel.includes(n.trim().toUpperCase())) : allNames;
 
     const votesOf = (p, name) => {
       const r = (p.resultados || []).find(x => x.candidato_o_lista === name);
       return r ? (r.votos || 0) : 0;
     };
+    // ganador/ranking calculado ENTRE los candidatos en foco (coherente con la selección)
     const winnerOf = (p) => {
-      const s = [...(p.resultados || [])].sort((a, b) => (b.votos || 0) - (a.votos || 0));
-      if (!s.length || (s[0].votos || 0) === 0) return null;
+      const s = names.map(n => ({ candidato_o_lista: n, votos: votesOf(p, n) })).sort((a, b) => b.votos - a.votos);
+      if (!s.length || s[0].votos === 0) return null;
       return s[0];
     };
 
-    const grandTotal = withData.reduce((a, p) => a + p.resultados.reduce((s, r) => s + (r.votos || 0), 0), 0);
+    const grandTotal = withData.reduce((a, p) => a + names.reduce((s, n) => s + votesOf(p, n), 0), 0);
 
     // resumen por candidato
     const perCand = names.map(name => {
@@ -38,8 +42,8 @@ export const StatsPanel = ({ puestos = [] }) => {
       withData.forEach(p => {
         const v = votesOf(p, name);
         total += v;
-        const ranks = [...p.resultados].sort((a, b) => (b.votos || 0) - (a.votos || 0));
-        const idx = ranks.findIndex(r => r.candidato_o_lista === name);
+        const ranks = names.map(n => ({ n, v: votesOf(p, n) })).sort((a, b) => b.v - a.v);
+        const idx = ranks.findIndex(r => r.n === name);
         if (v > 0) {
           if (idx === 0) first++; else if (idx === 1) second++; else if (idx === 2) third++;
         }
@@ -87,7 +91,7 @@ export const StatsPanel = ({ puestos = [] }) => {
 
     // ranking de puestos por votación (de los seleccionados)
     const rankingPuestos = [...withData].map(p => ({
-      p, total: p.resultados.reduce((s, r) => s + (r.votos || 0), 0), winner: winnerOf(p)
+      p, total: names.reduce((s, n) => s + votesOf(p, n), 0), winner: winnerOf(p)
     })).sort((a, b) => b.total - a.total);
 
     // puestos más reñidos (margen 1º-2º más pequeño, con votos)
@@ -107,18 +111,18 @@ export const StatsPanel = ({ puestos = [] }) => {
       names, withData, sinData: puestos.length - withData.length, totalPuestos: puestos.length,
       grandTotal, perCand, zonaRows, zonasWon, locRows, rankingPuestos, competidos, fortalezas
     };
-  }, [puestos]);
+  }, [puestos, compareCandidates]);
 
   if (!S.withData.length) {
     return <div className="text-slate-400 text-sm p-8 text-center">No hay datos de votación para analizar.</div>;
   }
 
   const Card = ({ children, className = '' }) => (
-    <div className={`bg-slate-900/80 border border-slate-800 rounded-2xl p-4 shadow-lg ${className}`}>{children}</div>
+    <div className={`bg-white border border-slate-200 rounded-2xl p-4 gov-shadow ${className}`}>{children}</div>
   );
   const SectionTitle = ({ icon: Icon, children, hint }) => (
     <div className="flex items-center justify-between mb-3">
-      <h3 className="text-sm font-bold text-slate-100 uppercase tracking-wider flex items-center gap-2">
+      <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
         <Icon className="w-4 h-4 text-cyan-400" /> {children}
       </h3>
       {hint && <span className="text-[10px] text-slate-500">{hint}</span>}
@@ -138,13 +142,13 @@ export const StatsPanel = ({ puestos = [] }) => {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2 min-w-0">
                 <span className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: c.color }} />
-                <span className="font-bold text-white truncate">{c.name}</span>
+                <span className="font-bold text-slate-900 truncate">{c.name}</span>
               </div>
               {i === 0 && <Crown className="w-4 h-4 text-amber-400 shrink-0" title="Más votos" />}
             </div>
             <div className="mt-3 flex items-end justify-between">
               <div>
-                <div className="text-2xl font-extrabold text-white font-heading">{c.total.toLocaleString()}</div>
+                <div className="text-2xl font-extrabold text-slate-900 font-heading">{c.total.toLocaleString()}</div>
                 <div className="text-[11px] text-slate-400">votos · {c.share}% del total</div>
               </div>
               <div className="text-right">
@@ -153,23 +157,23 @@ export const StatsPanel = ({ puestos = [] }) => {
               </div>
             </div>
             <div className="mt-3 grid grid-cols-3 gap-2 text-center">
-              <div className="bg-slate-950/60 rounded-lg py-1.5">
-                <div className="text-sm font-bold text-slate-200">{c.avg}</div>
+              <div className="bg-slate-50 rounded-lg py-1.5">
+                <div className="text-sm font-bold text-slate-700">{c.avg}</div>
                 <div className="text-[9px] text-slate-500 uppercase">Promedio</div>
               </div>
-              <div className="bg-slate-950/60 rounded-lg py-1.5">
-                <div className="text-sm font-bold text-slate-200">{c.second}/{c.third}</div>
+              <div className="bg-slate-50 rounded-lg py-1.5">
+                <div className="text-sm font-bold text-slate-700">{c.second}/{c.third}</div>
                 <div className="text-[9px] text-slate-500 uppercase">2º / 3º</div>
               </div>
-              <div className="bg-slate-950/60 rounded-lg py-1.5">
-                <div className="text-sm font-bold text-slate-200">{S.zonasWon[c.name] || 0}</div>
+              <div className="bg-slate-50 rounded-lg py-1.5">
+                <div className="text-sm font-bold text-slate-700">{S.zonasWon[c.name] || 0}</div>
                 <div className="text-[9px] text-slate-500 uppercase">Zonas</div>
               </div>
             </div>
             {c.best && c.best.votos > 0 && (
               <div className="mt-3 text-[11px] text-slate-400 flex items-center gap-1">
                 <Flame className="w-3 h-3 text-orange-400 shrink-0" />
-                Mejor puesto: <span className="text-slate-200 font-semibold truncate">{c.best.puesto.nombre_puesto}</span>
+                Mejor puesto: <span className="text-slate-700 font-semibold truncate">{c.best.puesto.nombre_puesto}</span>
                 <span className="ml-auto font-bold" style={{ color: c.color }}>{c.best.votos}</span>
               </div>
             )}
@@ -196,20 +200,20 @@ export const StatsPanel = ({ puestos = [] }) => {
         <Card>
           <SectionTitle icon={PieChart}>Cobertura</SectionTitle>
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-slate-950/60 rounded-xl p-3">
-              <div className="text-2xl font-extrabold text-white">{S.withData.length}</div>
+            <div className="bg-slate-50 rounded-xl p-3">
+              <div className="text-2xl font-extrabold text-slate-900">{S.withData.length}</div>
               <div className="text-[11px] text-slate-400">puestos con datos</div>
             </div>
-            <div className="bg-slate-950/60 rounded-xl p-3">
+            <div className="bg-slate-50 rounded-xl p-3">
               <div className="text-2xl font-extrabold text-slate-400">{S.sinData}</div>
               <div className="text-[11px] text-slate-400">sin datos</div>
             </div>
-            <div className="bg-slate-950/60 rounded-xl p-3">
-              <div className="text-2xl font-extrabold text-white">{S.grandTotal.toLocaleString()}</div>
+            <div className="bg-slate-50 rounded-xl p-3">
+              <div className="text-2xl font-extrabold text-slate-900">{S.grandTotal.toLocaleString()}</div>
               <div className="text-[11px] text-slate-400">votos (3 candidatos)</div>
             </div>
-            <div className="bg-slate-950/60 rounded-xl p-3">
-              <div className="text-2xl font-extrabold text-white">{S.zonaRows.length}</div>
+            <div className="bg-slate-50 rounded-xl p-3">
+              <div className="text-2xl font-extrabold text-slate-900">{S.zonaRows.length}</div>
               <div className="text-[11px] text-slate-400">zonas con datos</div>
             </div>
           </div>
@@ -228,22 +232,22 @@ export const StatsPanel = ({ puestos = [] }) => {
           <SectionTitle icon={Layers} hint={`${S.zonaRows.length} zonas`}>Ganador por zona</SectionTitle>
           <div className="max-h-80 overflow-y-auto -mx-1">
             <table className="w-full text-xs">
-              <thead className="text-slate-500 uppercase text-[10px] sticky top-0 bg-slate-900">
+              <thead className="text-slate-500 uppercase text-[10px] sticky top-0 bg-white">
                 <tr><th className="text-left py-1.5 px-2">Zona</th><th className="text-left px-2">Ganador</th>
                   {S.names.map(n => <th key={n} className="text-right px-2">{n.split(' ')[1] || n.split(' ')[0]}</th>)}
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/50">
+              <tbody className="divide-y divide-slate-100">
                 {S.zonaRows.map(z => (
-                  <tr key={z.zona} className="hover:bg-slate-800/40">
-                    <td className="py-1.5 px-2 font-mono text-slate-300">Zona {z.zona}</td>
+                  <tr key={z.zona} className="hover:bg-slate-50">
+                    <td className="py-1.5 px-2 font-mono text-slate-600">Zona {z.zona}</td>
                     <td className="px-2">
                       {z.winner
                         ? <span className="font-bold" style={{ color: colorForCandidate(z.winner) }}>{z.winner.split(' ')[0]} {z.winner.split(' ')[1] || ''}</span>
                         : <span className="text-slate-600">—</span>}
                     </td>
                     {S.names.map(n => (
-                      <td key={n} className={`text-right px-2 ${z.winner === n ? 'font-bold text-white' : 'text-slate-400'}`}>
+                      <td key={n} className={`text-right px-2 ${z.winner === n ? 'font-bold text-slate-900' : 'text-slate-400'}`}>
                         {(z.cand[n] || 0).toLocaleString()}
                       </td>
                     ))}
@@ -258,10 +262,10 @@ export const StatsPanel = ({ puestos = [] }) => {
           <SectionTitle icon={Swords} hint="menor margen 1º-2º">Puestos más reñidos</SectionTitle>
           <div className="max-h-80 overflow-y-auto space-y-2">
             {S.competidos.slice(0, 12).map(({ p, margen, first, second }, i) => (
-              <div key={p.puesto_id} className="flex items-center gap-2 bg-slate-950/50 rounded-lg p-2">
+              <div key={p.puesto_id} className="flex items-center gap-2 bg-slate-50 rounded-lg p-2">
                 <span className="text-[10px] text-slate-500 w-5 shrink-0">{i + 1}</span>
                 <div className="min-w-0 flex-1">
-                  <div className="text-xs font-semibold text-slate-200 truncate">{p.nombre_puesto}</div>
+                  <div className="text-xs font-semibold text-slate-700 truncate">{p.nombre_puesto}</div>
                   <div className="text-[10px] text-slate-500">Zona {zonaOf(p.puesto_id)} · {p.puesto_id}</div>
                 </div>
                 <div className="text-right shrink-0">
@@ -270,7 +274,7 @@ export const StatsPanel = ({ puestos = [] }) => {
                     <span className="text-slate-500"> vs </span>
                     <span style={{ color: colorForCandidate(second.candidato_o_lista) }} className="font-bold">{second.candidato_o_lista.split(' ')[0]}</span>
                   </div>
-                  <div className="text-[11px] font-extrabold text-white">margen {margen}</div>
+                  <div className="text-[11px] font-extrabold text-slate-900">margen {margen}</div>
                 </div>
               </div>
             ))}
@@ -289,8 +293,8 @@ export const StatsPanel = ({ puestos = [] }) => {
               {f.top.length === 0 && <div className="text-[11px] text-slate-500">Sin votos registrados.</div>}
               {f.top.map((x, i) => (
                 <div key={x.p.puesto_id} className="flex items-center gap-2 text-xs">
-                  <span className="w-4 h-4 rounded bg-slate-800 text-slate-300 text-[10px] font-bold flex items-center justify-center shrink-0">{i + 1}</span>
-                  <span className="truncate text-slate-300 flex-1">{x.p.nombre_puesto}</span>
+                  <span className="w-4 h-4 rounded bg-slate-800 text-slate-600 text-[10px] font-bold flex items-center justify-center shrink-0">{i + 1}</span>
+                  <span className="truncate text-slate-600 flex-1">{x.p.nombre_puesto}</span>
                   <span className="font-bold shrink-0" style={{ color: f.color }}>{x.v}</span>
                 </div>
               ))}
@@ -304,7 +308,7 @@ export const StatsPanel = ({ puestos = [] }) => {
         <SectionTitle icon={Trophy} hint={`${S.rankingPuestos.length} puestos`}>Ranking de puestos por votación (3 candidatos)</SectionTitle>
         <div className="max-h-96 overflow-y-auto -mx-1">
           <table className="w-full text-xs">
-            <thead className="text-slate-500 uppercase text-[10px] sticky top-0 bg-slate-900">
+            <thead className="text-slate-500 uppercase text-[10px] sticky top-0 bg-white">
               <tr>
                 <th className="text-left py-1.5 px-2">#</th>
                 <th className="text-left px-2">Puesto</th>
@@ -313,16 +317,16 @@ export const StatsPanel = ({ puestos = [] }) => {
                 <th className="text-right px-2">Total 3</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/50">
+            <tbody className="divide-y divide-slate-100">
               {S.rankingPuestos.slice(0, 40).map((r, i) => (
-                <tr key={r.p.puesto_id} className="hover:bg-slate-800/40">
+                <tr key={r.p.puesto_id} className="hover:bg-slate-50">
                   <td className="py-1.5 px-2 text-slate-500">{i + 1}</td>
-                  <td className="px-2 text-slate-200 truncate max-w-[220px]">{r.p.nombre_puesto}</td>
+                  <td className="px-2 text-slate-700 truncate max-w-[220px]">{r.p.nombre_puesto}</td>
                   <td className="px-2 font-mono text-slate-400">{r.p.puesto_id}</td>
                   <td className="px-2 font-semibold" style={{ color: r.winner ? colorForCandidate(r.winner.candidato_o_lista) : NO_DATA_COLOR }}>
                     {r.winner ? r.winner.candidato_o_lista.split(' ').slice(0, 2).join(' ') : '—'}
                   </td>
-                  <td className="px-2 text-right font-bold text-white">{r.total.toLocaleString()}</td>
+                  <td className="px-2 text-right font-bold text-slate-900">{r.total.toLocaleString()}</td>
                 </tr>
               ))}
             </tbody>
@@ -335,7 +339,7 @@ export const StatsPanel = ({ puestos = [] }) => {
         <SectionTitle icon={MapPin} hint={`${S.locRows.length} localidades`}>Votación por localidad / comuna</SectionTitle>
         <div className="max-h-80 overflow-y-auto -mx-1">
           <table className="w-full text-xs">
-            <thead className="text-slate-500 uppercase text-[10px] sticky top-0 bg-slate-900">
+            <thead className="text-slate-500 uppercase text-[10px] sticky top-0 bg-white">
               <tr>
                 <th className="text-left py-1.5 px-2">Localidad</th>
                 <th className="text-center px-2">Puestos</th>
@@ -343,16 +347,16 @@ export const StatsPanel = ({ puestos = [] }) => {
                 {S.names.map(n => <th key={n} className="text-right px-2">{n.split(' ')[1] || n.split(' ')[0]}</th>)}
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/50">
+            <tbody className="divide-y divide-slate-100">
               {S.locRows.map(l => (
-                <tr key={l.loc} className="hover:bg-slate-800/40">
-                  <td className="py-1.5 px-2 text-slate-300 truncate max-w-[220px]">{l.loc}</td>
+                <tr key={l.loc} className="hover:bg-slate-50">
+                  <td className="py-1.5 px-2 text-slate-600 truncate max-w-[220px]">{l.loc}</td>
                   <td className="px-2 text-center text-slate-400">{l.puestos}</td>
                   <td className="px-2 font-semibold" style={{ color: l.winner ? colorForCandidate(l.winner) : NO_DATA_COLOR }}>
                     {l.winner ? l.winner.split(' ').slice(0, 2).join(' ') : '—'}
                   </td>
                   {S.names.map(n => (
-                    <td key={n} className={`text-right px-2 ${l.winner === n ? 'font-bold text-white' : 'text-slate-400'}`}>{(l.cand[n] || 0).toLocaleString()}</td>
+                    <td key={n} className={`text-right px-2 ${l.winner === n ? 'font-bold text-slate-900' : 'text-slate-400'}`}>{(l.cand[n] || 0).toLocaleString()}</td>
                   ))}
                 </tr>
               ))}
