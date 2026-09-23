@@ -1,0 +1,2003 @@
+{
+ "fuente": "PUESTOS X BARRIO.xlsx",
+ "puestos": [
+  {
+   "puesto_id": "01-01",
+   "nombre": "CENTRO COMERCIAL BOCAGRANDE",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 23,
+   "inscritos": 7391,
+   "direccion": "CR 2 NO 8-146 BOCAGRANDE AV SAN MARTIN",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "MARIA CAMILA SALAS",
+     "referente": null
+    },
+    {
+     "nombre": "ANDRES RICO",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "01-02",
+   "nombre": "UNIV. TECNOLG. DE BOLIVAR - MA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 35,
+   "inscritos": 11434,
+   "direccion": "CLL DEL BOUQUET CR 21 NO. 25-92 MANGA",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "ANGELA VERGARA",
+     "referente": null
+    },
+    {
+     "nombre": "FEDERICO GARCIA",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "01-03",
+   "nombre": "LUDOTECA PARQUE CENTENARIO",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 5,
+   "inscritos": 1385,
+   "direccion": "GETSEMANI, CLL 32 No 7-120, PQ CENTENARIO",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "JAVIER QUIÑONES",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "01-04",
+   "nombre": "COL. EUCARÍSTICO DE SANTA TERESA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 19,
+   "inscritos": 6137,
+   "direccion": "Manga, Calle 27 No. 24-21",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "ANGELA VERGARA",
+     "referente": null
+    },
+    {
+     "nombre": "FEDERICO GARCIA",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "01-05",
+   "nombre": "CENTRO COMERCIAL PLAZA BOCAGRANDE",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 25,
+   "inscritos": 8283,
+   "direccion": "CRA 1 No 12 - 118",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "AMAURY PAZ",
+     "referente": null
+    },
+    {
+     "nombre": "SUSANA VELEZ",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "02-01",
+   "nombre": "COLEGIO DE LA ESPERANZA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 24,
+   "inscritos": 7836,
+   "direccion": "CLL 63 NO 02-04 CRESPO",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "ADOLFO VANEGAS",
+     "referente": null
+    },
+    {
+     "nombre": "DANIEL REYES",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "02-02",
+   "nombre": "COLEGIO NAVAL DE CRESPO",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 32,
+   "inscritos": 10501,
+   "direccion": "AV 9A CLL 72 BARRIO MILIT CRESPO",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "FEDERICO GARCIA",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "02-03",
+   "nombre": "COLEGIO EL CARMELO",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 13,
+   "inscritos": 4048,
+   "direccion": "CLL 66 NO 4-73 CRESPO",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "JAIDIR BALLESTAS",
+     "referente": null
+    },
+    {
+     "nombre": "SAMIR ARRIETA",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "02-04",
+   "nombre": "COLEGIO BERVELLY HILLS",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 20,
+   "inscritos": 6433,
+   "direccion": "CRESPO CRA 2 No 77-71",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "FEDERICO GARCIA",
+     "referente": null
+    },
+    {
+     "nombre": "ADOLFO VANEGAS",
+     "referente": null
+    },
+    {
+     "nombre": "JACOBO ISAAC",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "03-01",
+   "nombre": "COLEGIO LICEO BOLIVAR",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 25,
+   "inscritos": 8309,
+   "direccion": "CR 17 NO 71-25 DANIEL LEMAITRE",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "RAFA MEZA",
+     "referente": null
+    },
+    {
+     "nombre": "FEDERICO GARCIA",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "03-02",
+   "nombre": "IE STA MARIA SEDE SAGRADO CORAZON",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 29,
+   "inscritos": 9663,
+   "direccion": "CR 16 No 67-50 DANIEL LEMAITRE",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "RAFA MEZA",
+     "referente": null
+    },
+    {
+     "nombre": "FEDERICO GARCIA",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "03-03",
+   "nombre": "I.E.CORAZON DE MARIA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 23,
+   "inscritos": 7554,
+   "direccion": "SAN FRANCISCO FRENTE AL CAI CRA 19 No 77-29",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "RAFAEL MONIE",
+     "referente": null
+    },
+    {
+     "nombre": "YESIT MALLARINO",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "03-04",
+   "nombre": "IE CORAZON DE MARIA S S J CLAV",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 15,
+   "inscritos": 4688,
+   "direccion": "SAN FRANCISCO CRA 19 No 77-30",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "MATILDE REGISTRADURIA",
+     "referente": null
+    },
+    {
+     "nombre": "GENESIS BRIEVA",
+     "referente": "MATEO"
+    }
+   ]
+  },
+  {
+   "puesto_id": "03-05",
+   "nombre": "I.E SANTA MARIA SD MARCO FIDEL SUAREZ",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 17,
+   "inscritos": 5553,
+   "direccion": "BARRIO SANTA MARIA CLL 70 No 70-41",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "RAFA MEZA",
+     "referente": null
+    },
+    {
+     "nombre": "EBAT PINTO",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "04-01",
+   "nombre": "COLISEO CUBIERTO BERNARDO CARABALLO",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 34,
+   "inscritos": 11055,
+   "direccion": "CRA17 No 35-119",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "RAFA MEZA",
+     "referente": null
+    },
+    {
+     "nombre": "DAGOBERTO BUSTAMANTE",
+     "referente": null
+    },
+    {
+     "nombre": "ALVARO SHORBOCK",
+     "referente": "FEDE"
+    },
+    {
+     "nombre": "TANIA CONSUEGRA",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "04-02",
+   "nombre": "COLEGIO JOSE DE LA VEGA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 37,
+   "inscritos": 12306,
+   "direccion": "CLL 54 NO 17 - 102 TORICES",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "GIAN CARLOS NIETO",
+     "referente": null
+    },
+    {
+     "nombre": "JAVIER CABARCA",
+     "referente": null
+    },
+    {
+     "nombre": "MAYLEN BIANCHA",
+     "referente": "MEYLER"
+    }
+   ]
+  },
+  {
+   "puesto_id": "04-03",
+   "nombre": "IE HER. ANTONIO RAMOS DE LA SALLE",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 13,
+   "inscritos": 4315,
+   "direccion": "CLL NUEVA DEL ESPINAL NO 34-392 ESPINAL",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "PATRICIA FORTICH ACOSTA",
+     "referente": null
+    },
+    {
+     "nombre": "DAGOBERTO BUSTAMANTE",
+     "referente": null
+    },
+    {
+     "nombre": "ALVARO SHORBOCK",
+     "referente": "FEDE"
+    }
+   ]
+  },
+  {
+   "puesto_id": "04-04",
+   "nombre": "INST. ED. ANA MARIA VELEZ DE TRUJILLO",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 23,
+   "inscritos": 7399,
+   "direccion": "TORICES, SECT SANTA RITA CRA 16 # 17-53",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "DAGOBERTO BUSTAMANTE",
+     "referente": null
+    },
+    {
+     "nombre": "JAVIER CABARCAS",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "04-05",
+   "nombre": "CORP UNIVERSITARIA RAFAEL NUÑEZ TORICES",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 3,
+   "inscritos": 706,
+   "direccion": "TORICES CRA 17 No 35-117",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "FEDERICO GARCIA",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "05-01",
+   "nombre": "C.ECON. PIEDRA DE BOL UNIV. C/GENA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 33,
+   "inscritos": 10746,
+   "direccion": "AV CONSULADO CLL 30 NO 48-152 PIEDRA DE BOLIVAR",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "JOSE RAMIREZ",
+     "referente": null
+    },
+    {
+     "nombre": "GABRIEL PUERTA",
+     "referente": null
+    },
+    {
+     "nombre": "YENFA CONTRERAS",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "05-02",
+   "nombre": "COLEGIO COMFENALCO SEDE CEDESARROLLO",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 27,
+   "inscritos": 8964,
+   "direccion": "DG 30 No 50-187 ZARAGOCILLA SECT EL CAIRO",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "LISET PUERTA",
+     "referente": "MEYLER"
+    },
+    {
+     "nombre": "GABRIEL PUERTA",
+     "referente": null
+    },
+    {
+     "nombre": "JOSE RAMIREZ",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "05-03",
+   "nombre": "INST. ED. MADRE LAURA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 19,
+   "inscritos": 6052,
+   "direccion": "PIEDRA BOLIVAR CLL 30 NRO. 50 - 136",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "LISET PUERTA",
+     "referente": "MEYLER"
+    },
+    {
+     "nombre": "GABRIEL PUERTA",
+     "referente": null
+    },
+    {
+     "nombre": "JOSE RAMIREZ",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "05-04",
+   "nombre": "SENA 4 VIENTOS",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 15,
+   "inscritos": 4864,
+   "direccion": "AV. PEDRO DE HEREDIA SECT TESCA",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "YENFA CONTRERAS",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "05-05",
+   "nombre": "I E CASD MANUELA BELTRAN",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 9,
+   "inscritos": 2896,
+   "direccion": "AV PEDRO DE HEREDIA CLL 31 No 57-106",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "LIBIA BARRERA",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "06-01",
+   "nombre": "IE NUEVO BOSQUE",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 46,
+   "inscritos": 15353,
+   "direccion": "TR 53 NO 23A-104 MZ I URB BARLOVENTO",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "CARLOS TUÑON",
+     "referente": null
+    },
+    {
+     "nombre": "ADRIAN ORTIZ",
+     "referente": "MEYLER"
+    },
+    {
+     "nombre": "ROSA MARTINEZ",
+     "referente": "MEYLER"
+    }
+   ]
+  },
+  {
+   "puesto_id": "06-02",
+   "nombre": "COL ALBERTO ELIAS FERNANDEZ",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 32,
+   "inscritos": 10479,
+   "direccion": "DG 21A 47-49 AV BUENOS AIRES BOSQUE",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "06-03",
+   "nombre": "I.E NUEVO BOSQUE SEDE JOSE MARIA CORDOBA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 23,
+   "inscritos": 7662,
+   "direccion": "NUEVO BOSQUE 1RA ETAPA TRANSV 47 A NRO 29E - 12",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "CARLOS TUÑON",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "06-04",
+   "nombre": "INST. ED. FERNANDO DE LA VEGA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 13,
+   "inscritos": 4181,
+   "direccion": "BOSQUE DIAG. 21C NRO 53-40",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "JOHANIS FAISAR",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "06-05",
+   "nombre": "E. NORMAL SUPERIOR DE CARTAGENA D INDIAS",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 17,
+   "inscritos": 5603,
+   "direccion": "NUEVO BOSQUE KRA 51 #23-35",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "06-06",
+   "nombre": "UNIVERSIDAD DEL SINU SEDE PLAZA COLON",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 12,
+   "inscritos": 3867,
+   "direccion": "AV EL BOSQUE TRANSVERSAL 54 No 30 729",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "DAMIAN RODRIGUEZ",
+     "referente": null
+    },
+    {
+     "nombre": "CESAR CHAMORRO",
+     "referente": "FEDE"
+    }
+   ]
+  },
+  {
+   "puesto_id": "07-01",
+   "nombre": "IE SAN JUAN DE DAMASCO",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 35,
+   "inscritos": 11489,
+   "direccion": "AMBERES 1ER CALLEJON CR 41 NO 26C 38",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "BRAULIO VANEGAS",
+     "referente": null
+    },
+    {
+     "nombre": "JOSE MANUEL CANO",
+     "referente": "FEDE"
+    },
+    {
+     "nombre": "BLADIMIR CTP",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "07-02",
+   "nombre": "IE OLGA GONZALEZ ARRAUT",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 29,
+   "inscritos": 9432,
+   "direccion": "DG 22 NO 52-14 AV CRISANTO LUQUE",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "ALEXANDER CASSANOVA",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "07-03",
+   "nombre": "IE MANUELA BELTRAN - SED HIJOS",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 16,
+   "inscritos": 5118,
+   "direccion": "BARRIO CHILE MZ 75 LOTE 1",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "07-04",
+   "nombre": "SEMINARIO CARTAGENA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 13,
+   "inscritos": 4184,
+   "direccion": "ALCIBIA CLL 38 NRO 29 - 60",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "07-05",
+   "nombre": "UNIVERSIDAD ANTONIO NARIÑO",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 16,
+   "inscritos": 5124,
+   "direccion": "AV CRISANTO LUQUE DIAG 22",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "HERNANDO PERTUZ",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "07-06",
+   "nombre": "COLEGIO LATINOAMERICANO",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 5,
+   "inscritos": 1365,
+   "direccion": "B. PARAGUAY TRANS 45 No 26A 116 AV DEL ACUEDUCTO",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "CESAR ANAYA",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "07-07",
+   "nombre": "FUNDACION COLEGIO OCTAVIANA DEL C VIVES",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 1,
+   "inscritos": 209,
+   "direccion": "AMBERES CALLE 30 No 39 80",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "BLADIMIR CTP",
+     "referente": null
+    },
+    {
+     "nombre": "ADOLFO VANEGAS",
+     "referente": null
+    }
+   ]
+  },
+  {
+   "puesto_id": "08-01",
+   "nombre": "UNIV DE CARTAGENA CLAUSTRO SAN AGUSTIN",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 32,
+   "inscritos": 10632,
+   "direccion": "CR 6 36-100 CTRO CLL DE LA UNIVERSIDAD",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "08-02",
+   "nombre": "COL SALESIANOS SAN PEDRO CLAVE",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 18,
+   "inscritos": 6006,
+   "direccion": "CLL40 NO 09-80 LAS BOVEDAS BARRIO SN DIEGO",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "08-03",
+   "nombre": "IE ANTONIA SANTOS",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 32,
+   "inscritos": 10577,
+   "direccion": "CLL 31 NO18B131 PLAYON GRANDE PIE DE LA POPA",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "DANIEL GONZALEZ",
+     "referente": null
+    },
+    {
+     "nombre": "AMILKAR CABRERA",
+     "referente": null
+    },
+    {
+     "nombre": "HENRY SEGOVIA",
+     "referente": "FEDE"
+    }
+   ]
+  },
+  {
+   "puesto_id": "08-04",
+   "nombre": "UNIV. DE CARTAGENA CLAUSTRO LA MERCED",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 4,
+   "inscritos": 1067,
+   "direccion": "KR 5 # 38-40 - CENTRO",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "08-05",
+   "nombre": "FUNDACION UNIVERSITARIA LOS LIBERTADORES",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 20,
+   "inscritos": 6393,
+   "direccion": "PIE DE LA POPA, CALLE 31 No 19 -51",
+   "coordinadores": [],
+   "lideres": [
+    {
+     "nombre": "DANIEL GONZALEZ",
+     "referente": null
+    },
+    {
+     "nombre": "HENRY SEGOVIA",
+     "referente": "FEDE"
+    }
+   ]
+  },
+  {
+   "puesto_id": "09-01",
+   "nombre": "INST UNIVERSITARIA MAYOR DE CARTAGENA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 29,
+   "inscritos": 9397,
+   "direccion": "CTRO.KR3 #34 -29 CL DE LA FACTORIA",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "09-02",
+   "nombre": "INST UNI BELLAS ARTES Y CIENCIAS DE BOL.",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 16,
+   "inscritos": 5041,
+   "direccion": "KR 9 #39-12 SAN DIEGO",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "09-03",
+   "nombre": "ESCUELAS PROFESIONALES SALESIANAS",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 14,
+   "inscritos": 4578,
+   "direccion": "Cra. 9 # 39-60 ? CALLE DE LAS BOVEDAS CENTRO",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "10-01",
+   "nombre": "IE FE Y ALEGRIA LAS GAVIOTAS",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 44,
+   "inscritos": 14414,
+   "direccion": "TR 65 NO 31-111 LAS GAVIOTAS ENTRADA P.PAL",
+   "coordinadores": [
+    {
+     "nombre": "ABEL RAMIREZ",
+     "referente": null
+    },
+    {
+     "nombre": "MARCEL PAREJA",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "10-02",
+   "nombre": "IE LAS GAVIOTAS SEDE MOISES GO",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 16,
+   "inscritos": 5245,
+   "direccion": "LAS GAVIOTAS MZ 33 LOTE 8 ETAPA 2ª",
+   "coordinadores": [
+    {
+     "nombre": "MARIO IMBETT",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "10-03",
+   "nombre": "I.E. LAS GAVIOTAS SEDE EL NIÑO JESUS",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 18,
+   "inscritos": 5709,
+   "direccion": "MZNA 70 LOT 3 ETAPA 2 GAVIOTAS",
+   "coordinadores": [
+    {
+     "nombre": "LERWIS ORTIZ",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "10-04",
+   "nombre": "CENTRO DE ENSEÑANZA HIJOS DE BOLIVAR",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 21,
+   "inscritos": 6799,
+   "direccion": "LOS ALPES URB 13 DE JUNIO DG 32 No 70-75",
+   "coordinadores": [
+    {
+     "nombre": "VICTOR ROMERO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "11-01",
+   "nombre": "IE FOCO ROJO",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 37,
+   "inscritos": 12112,
+   "direccion": "CR 50 NO 32-47 AV PEDRO ROMERO OLAYA",
+   "coordinadores": [
+    {
+     "nombre": "JOSE CUERO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "11-02",
+   "nombre": "COLEGIO ALMIRANTE COLON S. OLAYA",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 25,
+   "inscritos": 8343,
+   "direccion": "OLAYA SECTOR RICAURTE CARRERA 31D #60 47",
+   "coordinadores": [
+    {
+     "nombre": "VICTOR ROMERO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "11-03",
+   "nombre": "I.E. PLAYAS DE ACAPULCO",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 19,
+   "inscritos": 6054,
+   "direccion": "LIBANO AVE PEDRO ROMERO ESQUINA 48 C 60",
+   "coordinadores": [
+    {
+     "nombre": "JOSE CUERO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "11-04",
+   "nombre": "IE. NUESTRA SEÑORA PERPETUO SOCORRO",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 20,
+   "inscritos": 6613,
+   "direccion": "Cl JUAN C ARANGO Kra 49 31 - 55",
+   "coordinadores": [
+    {
+     "nombre": "JOSE SOTO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "11-05",
+   "nombre": "IE REPUBLICA DEL LIBANO",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 2,
+   "inscritos": 398,
+   "direccion": "AV. PEDRO ROMERO SEC EL LIBANO CLL 31 D No 54 84",
+   "coordinadores": [
+    {
+     "nombre": "JOSE CUERO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "11-06",
+   "nombre": "IE SAN FELIPE NERIS",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 2,
+   "inscritos": 658,
+   "direccion": "CL YANES CRA 57 No 56-65 OLAYA HERRERA SEC RICAUR",
+   "coordinadores": [
+    {
+     "nombre": "MANUEL RODRIGUEZ BOCA",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "12-01",
+   "nombre": "IE FRANCISCO DE PAULA SANTANDE",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 29,
+   "inscritos": 9674,
+   "direccion": "CR 36 NO 33A 52 LA MARIA",
+   "coordinadores": [
+    {
+     "nombre": "MARCIA ESCOBAR",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "12-02",
+   "nombre": "IE MARIA REINA",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 21,
+   "inscritos": 6931,
+   "direccion": "CR 29 NO 37-38 LA ESPERANZA",
+   "coordinadores": [
+    {
+     "nombre": "HAROLD PASTRANA",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "12-03",
+   "nombre": "ESCUELA CIUDAD DE TUNJA",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 29,
+   "inscritos": 9486,
+   "direccion": "CLL 32C NO 37-32 CLL DEL MEDIO ALCIBIA",
+   "coordinadores": [
+    {
+     "nombre": "MELLO SALOMON",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "12-04",
+   "nombre": "I.E. CORAZON DE MARIA - LAZARO MARTINEZ",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 9,
+   "inscritos": 2993,
+   "direccion": "LA MARIA SECTOR LOS CORALES CARRERA 34 CALLE 52",
+   "coordinadores": [
+    {
+     "nombre": "MARTA SOTO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "12-05",
+   "nombre": "I.E. ANTONIO NARIÑO",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 20,
+   "inscritos": 6530,
+   "direccion": "LA ESPERANZA CALLE ALFONSO LOPEZ No. 29-35",
+   "coordinadores": [
+    {
+     "nombre": "JAVIER MIRANDA",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "12-06",
+   "nombre": "I.E. PEDRO ROMERO",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 15,
+   "inscritos": 4968,
+   "direccion": "ALCIBIA AV PEDRO ROMERO CL 31 # 34-39",
+   "coordinadores": [
+    {
+     "nombre": "DIONISIO ARANGO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "12-07",
+   "nombre": "IE OMAIRA SANCHEZ",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 6,
+   "inscritos": 1979,
+   "direccion": "BARRIO LA CANDELARIA CRA 40 No 44 01",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "12-08",
+   "nombre": "CDI CIENAGA DE LA VIRGEN",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 1,
+   "inscritos": 161,
+   "direccion": "CRA 49 No 37 A - 218 VIA PERIMETRAL",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "13-01",
+   "nombre": "IE CAMILO TORRES",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 47,
+   "inscritos": 15653,
+   "direccion": "CR 89 LOTE 13 MZ 49 POZON",
+   "coordinadores": [
+    {
+     "nombre": "ANTONIO BELLIDO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "13-02",
+   "nombre": "CENTRO COLOMBIATON GUSTAVO PULECIO",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 34,
+   "inscritos": 11293,
+   "direccion": "MZ 1 LOTE 1 FLOR DEL CAMPO",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "13-03",
+   "nombre": "IE LA LIBERTAD",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 30,
+   "inscritos": 9934,
+   "direccion": "EL POZON TRANV 60 M 89 L 7 CALLEJON 6",
+   "coordinadores": [
+    {
+     "nombre": "ADRIAN LARIOS",
+     "referente": null
+    },
+    {
+     "nombre": "JORGE BELEÑO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "13-04",
+   "nombre": "IE NUESTRO ESFUERZO",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 21,
+   "inscritos": 6785,
+   "direccion": "POZON SC SAGRADO CORAZON DE JESUS",
+   "coordinadores": [
+    {
+     "nombre": "MARIA REYES",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "13-05",
+   "nombre": "IE CLEMENTE MANUEL ZABALA",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 11,
+   "inscritos": 3432,
+   "direccion": "FLOR DEL CAMPO CARRETERA DE LA CORDIALIDAD MZ 7",
+   "coordinadores": [
+    {
+     "nombre": "JOSE CUERO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "13-06",
+   "nombre": "IE JORGE GARCIA USTA",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 18,
+   "inscritos": 5708,
+   "direccion": "BICENTENARIO,MZA 77 SECTOR No 77 - 01",
+   "coordinadores": [
+    {
+     "nombre": "JOSE CUERO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "14-01",
+   "nombre": "ESCUELA GABRIELA SAN MARTIN",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 44,
+   "inscritos": 14448,
+   "direccion": "CLL 33 NO 77-48 OLAYA",
+   "coordinadores": [
+    {
+     "nombre": "LUIS CASSIANI",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "14-02",
+   "nombre": "COL FE Y ALEGRIA LAS AMERICAS",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 33,
+   "inscritos": 10940,
+   "direccion": "CR 84 NO 32B-152 SECT NVO PARAISO OLAYA",
+   "coordinadores": [
+    {
+     "nombre": "LUIS CASSIANI",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "14-03",
+   "nombre": "CENTRO CULTURAL LAS PALMERAS",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 21,
+   "inscritos": 6774,
+   "direccion": "LAS PALMERAS D 77 No 55B-68",
+   "coordinadores": [
+    {
+     "nombre": "PEDRO MARQUEZ",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "14-04",
+   "nombre": "IE DE FREDONIA",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 21,
+   "inscritos": 6790,
+   "direccion": "FREDONIA CLL 46 CRA 79-05",
+   "coordinadores": [
+    {
+     "nombre": "LUIS CASSIANI",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "14-05",
+   "nombre": "COLEGIO DIOS ES AMOR CDA",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 3,
+   "inscritos": 675,
+   "direccion": "VILLA ESTRELLA TRANSV 54 No 80- 863",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "14-06",
+   "nombre": "IE TECNICA VILLA ESTRELLA",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 2,
+   "inscritos": 607,
+   "direccion": "CALLE 36 No 91-15 VILLA ESTRELLA SEC PRADO",
+   "coordinadores": [
+    {
+     "nombre": "LUIS BUELVAS",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "15-01",
+   "nombre": "IE FULGENCIO LEQUERICA VELEZ",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 21,
+   "inscritos": 6920,
+   "direccion": "CHIQUINQUIRA MZ 56 LOTE 1",
+   "coordinadores": [
+    {
+     "nombre": "VICTOR ROMERO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "15-02",
+   "nombre": "NUESTRA SEÑORA DEL CARMEN",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 26,
+   "inscritos": 8445,
+   "direccion": "CHIQUINQUIRA AV PEDRO DE HEREDIA CLL 31C No 56-191",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "15-03",
+   "nombre": "IE FULGENCIO LEQUERICA VELEZ- ECUADOR",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 19,
+   "inscritos": 6108,
+   "direccion": "OLAYA HERRERA SECTOR CENTRAL CLL 31 D NRO 60B-56",
+   "coordinadores": [
+    {
+     "nombre": "ELVIS BLANCO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "15-04",
+   "nombre": "FUND. UNIV. COLOMBO INTERNACIONAL",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 21,
+   "inscritos": 6785,
+   "direccion": "AV PEDRO DE HEREDIA SEC. 4 VIENTOS KRA 50 No 31-50",
+   "coordinadores": [
+    {
+     "nombre": "JOSE CUERO",
+     "referente": null
+    },
+    {
+     "nombre": "JOSE SOTO",
+     "referente": null
+    },
+    {
+     "nombre": "PAPI GALAN",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "16-01",
+   "nombre": "COLEGIO INEM",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 35,
+   "inscritos": 11427,
+   "direccion": "AV DEL BOSQUE TRANSV. 54 No 30-570",
+   "coordinadores": [
+    {
+     "nombre": "RICARDO ROMERO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "16-02",
+   "nombre": "CENT RECREACIONAL NAPOLEON PEREA",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 26,
+   "inscritos": 8598,
+   "direccion": "TR 54 NO 44-25 CARRET BOSQUE",
+   "coordinadores": [
+    {
+     "nombre": "ALEX LOPEZ",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "16-03",
+   "nombre": "IE JOSE M RODRIGUEZ S ISABEL LA CATOLICA",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 23,
+   "inscritos": 7666,
+   "direccion": "ALMIRANTE COLON MZ O LOTE 18 ETAPA 2",
+   "coordinadores": [
+    {
+     "nombre": "RICARDO ROMERO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "16-04",
+   "nombre": "IE JOSE MANUEL R-JARDIN INF CARACOLES",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 9,
+   "inscritos": 2820,
+   "direccion": "LOS CARACOLES TRANSV. 55 No. 22C -110 II ETAPA",
+   "coordinadores": [
+    {
+     "nombre": "LUIS FERNANDO CASTELLON",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "17-01",
+   "nombre": "IE 20 DE JULIO",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 33,
+   "inscritos": 10904,
+   "direccion": "CR 58A NO 8-86 BARRIO 20 DE JULIO",
+   "coordinadores": [
+    {
+     "nombre": "GERMAN PINILLA",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "17-02",
+   "nombre": "IE BERTHA GEDEON DE BALADI",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 27,
+   "inscritos": 8965,
+   "direccion": "CLL 12 CR 58 ESQ ET 7 CAMPESTRE",
+   "coordinadores": [
+    {
+     "nombre": "IVAN CRUZ",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "17-03",
+   "nombre": "COLEGIO ALMIRANTE COLON VISTA HERMOSA",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 21,
+   "inscritos": 6803,
+   "direccion": "VISTA HERMOSA CARRERA 60 D N. 20 58",
+   "coordinadores": [
+    {
+     "nombre": "RAMIRO MARTINEZ",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "17-04",
+   "nombre": "IE SALIM BECHARA SEDE ALBORNOZ",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 5,
+   "inscritos": 1366,
+   "direccion": "BARRIO ALBORNOZ CRA 50 CALLE 2 40",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "18-01",
+   "nombre": "IE LUIS CARLOS LOPEZ",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 33,
+   "inscritos": 10697,
+   "direccion": "MZ I LOTE 11 ET 2 SECT COMER-BLAS DE LEZO",
+   "coordinadores": [
+    {
+     "nombre": "CRISTIAN HERAZO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "18-02",
+   "nombre": "IE TERNERA",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 26,
+   "inscritos": 8562,
+   "direccion": "CLL DEL PARAISO NO32D-47 TERNERA",
+   "coordinadores": [
+    {
+     "nombre": "ISMELIS CABRERA",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "18-03",
+   "nombre": "IE SOLEDAD ACOSTA DE SAMPER",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 12,
+   "inscritos": 3777,
+   "direccion": "BLAS DE LEZO SEGUNDA ETAPA SECTOR COMERCIAL",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "18-04",
+   "nombre": "UNIVERSIDAD SAN BUENAVENTURA",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 38,
+   "inscritos": 12490,
+   "direccion": "CALLE REAL DE TERNERA DIAG. 32 No 30-966",
+   "coordinadores": [
+    {
+     "nombre": "YINA MEDINA",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "18-05",
+   "nombre": "COLEGIO BIFFI",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 12,
+   "inscritos": 3766,
+   "direccion": "BARRIO LA PROVIDENCIA CRA 71 No 31A 248",
+   "coordinadores": [
+    {
+     "nombre": "PEDRO BARRIOS",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "18-06",
+   "nombre": "CENTRO COMERCIAL PARQUE HEREDIA",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 8,
+   "inscritos": 2473,
+   "direccion": "DIAG 32 No80-966 SUPER MANZANA 5 LOTE 1",
+   "coordinadores": [
+    {
+     "nombre": "IVONNE CONSUEGRA",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "19-01",
+   "nombre": "COL FE Y ALEGRIA EL PROGRESO",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 29,
+   "inscritos": 9447,
+   "direccion": "CLL5 NO 68-25 SN.PEDRO MARTIR SECT PROGRESO",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "19-02",
+   "nombre": "IE SAN FRANCISCO ASIS - HIJO DE LOS AGRI",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 27,
+   "inscritos": 8976,
+   "direccion": "ARROZ BARATO VIA MAMONAL CARRET CR 3NO 8-71",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "19-03",
+   "nombre": "IE SAN LUCAS",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 11,
+   "inscritos": 3647,
+   "direccion": "CALLE VALENCIA CON BOGOTA No 61 - 44",
+   "coordinadores": [
+    {
+     "nombre": "IVAN CRUZ",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "19-04",
+   "nombre": "IE POLICARPA SALAVARRIETA",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 6,
+   "inscritos": 1840,
+   "direccion": "CALLE 70 SECTOR CENTRAL",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "20-01",
+   "nombre": "IE MERCEDES ABREGO",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 52,
+   "inscritos": 17188,
+   "direccion": "CR 82 SECT KALAMARY SAN FERNANDO",
+   "coordinadores": [
+    {
+     "nombre": "PEDRO BARRIOS",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "20-02",
+   "nombre": "COL SUEÑOS Y OPORTUNIDADES JES",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 31,
+   "inscritos": 10022,
+   "direccion": "NELSON MANDELA MZ J LOTE 11",
+   "coordinadores": [
+    {
+     "nombre": "JULIO PRIMERA",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "20-03",
+   "nombre": "IE MERCEDES ABREGO SEDE MEDELLIN",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 25,
+   "inscritos": 8134,
+   "direccion": "SAN FERNANDO SECTOR MEDELLIN CALLE LAS NIEVES",
+   "coordinadores": [
+    {
+     "nombre": "EMBER DIAZ",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "20-04",
+   "nombre": "I.E. CIUDADELA 2000",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 15,
+   "inscritos": 4991,
+   "direccion": "Ciudadela 2000 Carrera 83 No. 9-100",
+   "coordinadores": [
+    {
+     "nombre": "ALBERTO BERNAL",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "20-05",
+   "nombre": "I.E. SALVADOR MANDELA",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 21,
+   "inscritos": 7012,
+   "direccion": "NELSON MANDELA CALLE LAS BRISAS SECTOR LOS OLIVOS",
+   "coordinadores": [
+    {
+     "nombre": "ALFONSO MEDINA",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "20-06",
+   "nombre": "I.E. ROSEDAL",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 18,
+   "inscritos": 5793,
+   "direccion": "EL EDUCADOR SECTOR ROSENDAL CALLE 5 N. 78 401",
+   "coordinadores": [
+    {
+     "nombre": "VIVIANA PACHECO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "21-01",
+   "nombre": "IE JHON F KENNEDY",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 39,
+   "inscritos": 12825,
+   "direccion": "ET 3RA MZ 3 LOTE 1 BARRIO BLAS DE LEZO",
+   "coordinadores": [
+    {
+     "nombre": "CRISTIAN HERAZO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "21-02",
+   "nombre": "INST FEMENINO PROMOCION SOCIAL",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 38,
+   "inscritos": 12628,
+   "direccion": "CLL 25 NO 71-24 SOCORRO",
+   "coordinadores": [
+    {
+     "nombre": "FERNANDO HERRRERA",
+     "referente": null
+    },
+    {
+     "nombre": "RAMIRO MARTINEZ",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "21-03",
+   "nombre": "I.E. NUESTRA SEÑORA DE LA CONSOLATA",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 25,
+   "inscritos": 8160,
+   "direccion": "BLA D ELEZO AV. KENEDY No. 26-28",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "21-04",
+   "nombre": "I.E. JUAN JOSE NIETO",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 23,
+   "inscritos": 7544,
+   "direccion": "El Socorro Cll 25 71-24 Entrada Ppal",
+   "coordinadores": [
+    {
+     "nombre": "OMAR ZAMBRANO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "22-01",
+   "nombre": "COLEGIO COMFAMILIAR",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 32,
+   "inscritos": 10626,
+   "direccion": "CR103NO 35-151 MZ 9 LOTE 26 SN.JOSE CAMPANOS",
+   "coordinadores": [
+    {
+     "nombre": "CLARIBEL VERGARA",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "22-02",
+   "nombre": "ESC ANA MARIA PEREZ OTERO",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 36,
+   "inscritos": 11995,
+   "direccion": "CLL 23B 77-15 PLAN 332 MZ 34 SOCORRO",
+   "coordinadores": [
+    {
+     "nombre": "MEYLER CABRERA",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "22-03",
+   "nombre": "IE PROM SOCIAL DE C/GENA SD LA CONSOLATA",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 8,
+   "inscritos": 2479,
+   "direccion": "LA CONSOLATA SECTOR SANTA ISABEL MZA O LOTE 2",
+   "coordinadores": [
+    {
+     "nombre": "DARIO AHUMEDO",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "22-04",
+   "nombre": "IE AMBIENTALISTA CARTAGENA DE INDIAS",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 31,
+   "inscritos": 10316,
+   "direccion": "SAN JOSE DE LOS CAMPANOS CRA 103 CALLE 38",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "22-05",
+   "nombre": "IE SEDE EMILIANO ALCALA ROMERO",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 6,
+   "inscritos": 1940,
+   "direccion": "EL SOCORRO PLAN 500 A MZA 36",
+   "coordinadores": [
+    {
+     "nombre": "PAOLA BRUN",
+     "referente": null
+    }
+   ],
+   "lideres": []
+  },
+  {
+   "puesto_id": "22-06",
+   "nombre": "I E REPUBLICA DE ARGENTINA",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 6,
+   "inscritos": 1690,
+   "direccion": "TRANSV 18 LOTE 1",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "22-07",
+   "nombre": "CENTRO COMERCIAL LA GRAN MANZANA",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 13,
+   "inscritos": 4196,
+   "direccion": "LA CAROLINADIAG 38 A No 82-12",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "98-01",
+   "nombre": "CARCEL DISTRITAL DE TERNERA",
+   "localidad": "Sin localidad",
+   "mesas": 2,
+   "inscritos": 501,
+   "direccion": "DG 31 No 85-180 TERNERA",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-01",
+   "nombre": "SANTA CRUZ DEL ISLOTE",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 2,
+   "inscritos": 498,
+   "direccion": "CE SANTA CRUZ DEL ISLOTE",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-02",
+   "nombre": "BARU",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 8,
+   "inscritos": 2561,
+   "direccion": "I.E. LUIS FELIPE CABRERA DE BARU",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-03",
+   "nombre": "BOCACHICA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 20,
+   "inscritos": 7002,
+   "direccion": "I.E.DOMINGO BENKOS",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-05",
+   "nombre": "CAÑO DE LORO",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 6,
+   "inscritos": 2091,
+   "direccion": "I.E.SAN JOSE CAÑO",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-09",
+   "nombre": "ISLA FUERTE",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 3,
+   "inscritos": 830,
+   "direccion": "I.E.ISLA FUERTE",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-13",
+   "nombre": "ISLAS DEL ROSARIO",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 2,
+   "inscritos": 597,
+   "direccion": "I.E.ISLAS DEL ROSARIO",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-17",
+   "nombre": "SANTA ANA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 12,
+   "inscritos": 4323,
+   "direccion": "SANTA ANA",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-21",
+   "nombre": "TIERRABOMBA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 9,
+   "inscritos": 3185,
+   "direccion": "I.E.TIERRABOMBA",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-22",
+   "nombre": "I.E NUEVA ESPERANZA ARROYO GRANDE",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 5,
+   "inscritos": 1732,
+   "direccion": "IE NUEVA ESPERANZA",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-25",
+   "nombre": "ARROYO DE PIEDRA",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 6,
+   "inscritos": 1970,
+   "direccion": "IE ARROYO DE PIEDRA",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-33",
+   "nombre": "BAYUNCA",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 26,
+   "inscritos": 9449,
+   "direccion": "I.E.BAYUNCA CARRET",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-34",
+   "nombre": "LA BOQUILLA",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 25,
+   "inscritos": 9079,
+   "direccion": "BOQUILLA CARRERA 3 #71-26",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-35",
+   "nombre": "PONTEZUELA",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 6,
+   "inscritos": 1880,
+   "direccion": "I.E. PONTEZUELA CL 1",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-41",
+   "nombre": "PUNTA CANOA",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 3,
+   "inscritos": 913,
+   "direccion": "CORPORACION PAULO FREYLE",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-70",
+   "nombre": "PASACABALLOS",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 31,
+   "inscritos": 11073,
+   "direccion": "IE JOSE MARIA CORDOBA",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-71",
+   "nombre": "PASACABALLOS - MEMBRILLAL",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 4,
+   "inscritos": 1162,
+   "direccion": "IE SAN FRANCISCO DE ASIS SD MEMBRILLAL CLL PPAL",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-72",
+   "nombre": "LA BOQUILLA 2",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 6,
+   "inscritos": 2046,
+   "direccion": "IE SAN FELIPE CRA 3 No 71-26 PLAZA LA MOJARRA",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-73",
+   "nombre": "TERMINAL ZONA NORTE",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 9,
+   "inscritos": 3162,
+   "direccion": "TERMINAL DE TRANSPORTE ZONA NORTE KM 8",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-74",
+   "nombre": "BAYUNCA 2 (SEDE LAS LATAS)",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 6,
+   "inscritos": 2162,
+   "direccion": "CARRETERA LA CORDIALIDAD BAYUNCA",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-75",
+   "nombre": "PASACABALLOS 2",
+   "localidad": "Localidad 3 · Industrial de la Bahía",
+   "mesas": 1,
+   "inscritos": 274,
+   "direccion": "CLL LA LOMA No 17-75 PASACABALLOS",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-76",
+   "nombre": "TIERRABOMBA 2 PUNTA ARENA",
+   "localidad": "Localidad 1 · Histórica y del Caribe",
+   "mesas": 1,
+   "inscritos": 258,
+   "direccion": "IE TIERRABOMBA SEDE PUNTA ARENA",
+   "coordinadores": [],
+   "lideres": []
+  },
+  {
+   "puesto_id": "99-77",
+   "nombre": "ARROYO DE PIEDRA 2 ARROYO DE LAS CANOAS",
+   "localidad": "Localidad 2 · De la Virgen y Turística",
+   "mesas": 1,
+   "inscritos": 202,
+   "direccion": "ANILLO VIAL VEREDA ARROYO DE LAS CANOAS",
+   "coordinadores": [],
+   "lideres": []
+  }
+ ],
+ "sin_puesto": [
+  {
+   "nombre": "IVAN CRUZ",
+   "rol": "coordinador",
+   "hoja": "LOCALIDAD 3",
+   "nota": "Fila sin puesto en el Excel"
+  },
+  {
+   "nombre": "ANDEES OROZCO",
+   "rol": "coordinador",
+   "hoja": "LOCALIDAD 3",
+   "nota": "Fila sin puesto en el Excel"
+  }
+ ]
+}

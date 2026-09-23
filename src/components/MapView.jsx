@@ -1,5 +1,6 @@
 import React, { useMemo, useEffect } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup, Tooltip, useMap } from 'react-leaflet';
+import { CARTO_DARK_URL, CARTO_ATTRIBUTION } from '../utils/basemap';
 import {
   getComparison, getSortedResults, getPuestoWinner, calculateMarkerRadius,
   colorForCandidate, NO_DATA_COLOR
@@ -63,8 +64,8 @@ export const MapView = ({
       <MapContainer center={cartagenaCenter} zoom={12} scrollWheelZoom={true} className="w-full h-full z-10">
         <MapController focusedPuesto={focusedPuesto} />
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          attribution={CARTO_ATTRIBUTION}
+          url={CARTO_DARK_URL}
           maxZoom={19}
         />
 

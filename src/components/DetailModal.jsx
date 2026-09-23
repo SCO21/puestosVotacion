@@ -72,11 +72,13 @@ export const DetailModal = ({
                 })}
               </div>
             </div>
-            <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
-              <div className="text-[10px] font-bold uppercase text-slate-400">Líder asignado</div>
-              <div className="text-sm font-bold text-slate-900 truncate">{leaderInfo ? leaderInfo.nombre_lider : 'Sin líder asignado'}</div>
-              {leaderInfo && <div className="text-[10px] text-blue-500">{leaderInfo.num_activistas} activistas</div>}
-            </div>
+            {leaderInfo && (
+              <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                <div className="text-[10px] font-bold uppercase text-slate-400">Líder asignado</div>
+                <div className="text-sm font-bold text-slate-900 truncate">{leaderInfo.nombre_lider}</div>
+                <div className="text-[10px] text-blue-500">{leaderInfo.num_activistas} activistas</div>
+              </div>
+            )}
           </div>
 
           {/* Escrutinio completo — scroll para muchos candidatos */}

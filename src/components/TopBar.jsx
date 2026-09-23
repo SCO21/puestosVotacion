@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
   Search, Upload, LogOut, MapPin, X, ChevronDown, Target,
-  Landmark, Map as MapIcon, Users, BarChart3, Vote
+  Landmark, Map as MapIcon, Users, BarChart3, Vote, Network, Palette, Filter
 } from 'lucide-react';
 import { colorForCandidate } from '../utils/electionAnalytics';
 
@@ -19,6 +19,9 @@ export const TopBar = ({
   cargoFilter, setCargoFilter, allCargos = [],
   searchQuery, setSearchQuery, allPuestos = [], onSelectPuestoFromSearch,
   onOpenUploader, onLogout,
+  // modo estructura
+  modo = 'resultados', setModo, colorBy, setColorBy, colorByOptions = [],
+  locFilter, setLocFilter, localidades = [], estadoFilter, setEstadoFilter, estados = [],
 }) => {
   const [debOpen, setDebOpen] = useState(false);
   const [candOpen, setCandOpen] = useState(false);
@@ -115,6 +118,18 @@ export const TopBar = ({
               </button>
             );
           })}
+          {activeModule === 'consulta' && setModo && (
+            <div className="ml-auto flex items-center gap-1 bg-slate-100 rounded-lg p-0.5 my-1.5 shrink-0">
+              <button onClick={() => setModo('resultados')}
+                className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-md whitespace-nowrap ${modo !== 'estructura' ? 'bg-white shadow text-blue-700' : 'text-slate-500 hover:text-slate-800'}`}>
+                <Vote className="w-3.5 h-3.5" /> Resultados electorales
+              </button>
+              <button onClick={() => setModo('estructura')}
+                className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-md whitespace-nowrap ${modo === 'estructura' ? 'bg-emerald-600 shadow text-white' : 'text-slate-500 hover:text-slate-800'}`}>
+                <Network className="w-3.5 h-3.5" /> Evaluación de estructura
+              </button>
+            </div>
+          )}
         </nav>
       </div>
 
@@ -150,6 +165,33 @@ export const TopBar = ({
               )}
             </div>
 
+            {modo === 'estructura' ? (
+              <>
+                <div className="md:col-span-3 relative">
+                  <Palette className="w-4 h-4 text-slate-400 absolute left-2.5 top-2.5 pointer-events-none" />
+                  <select value={colorBy} onChange={e => setColorBy(e.target.value)} title="Colorear el mapa por"
+                    className="w-full bg-white border border-slate-300 text-slate-700 text-sm rounded-lg pl-8 pr-2 py-2 focus:outline-none focus:border-blue-500 cursor-pointer">
+                    {colorByOptions.map(o => <option key={o.id} value={o.id}>Color: {o.label}</option>)}
+                  </select>
+                </div>
+                <div className="md:col-span-2 relative">
+                  <select value={locFilter} onChange={e => setLocFilter(e.target.value)}
+                    className="w-full bg-white border border-slate-300 text-slate-700 text-sm rounded-lg px-2 py-2 focus:outline-none focus:border-blue-500 cursor-pointer">
+                    <option value="TODAS">Todas las localidades</option>
+                    {localidades.map(l => <option key={l} value={l}>{l.split('·')[0].trim()}</option>)}
+                  </select>
+                </div>
+                <div className="md:col-span-2 relative">
+                  <Filter className="w-4 h-4 text-slate-400 absolute left-2.5 top-2.5 pointer-events-none" />
+                  <select value={estadoFilter} onChange={e => setEstadoFilter(e.target.value)}
+                    className="w-full bg-white border border-slate-300 text-slate-700 text-sm rounded-lg pl-8 pr-2 py-2 focus:outline-none focus:border-blue-500 cursor-pointer">
+                    <option value="TODOS">Toda asignación</option>
+                    {estados.map(e => <option key={e.id} value={e.id}>{e.label}</option>)}
+                  </select>
+                </div>
+              </>
+            ) : (
+              <>
             {/* Comparador de candidatos */}
             <div ref={candRef} className="md:col-span-4 relative">
               <button onClick={() => setCandOpen(o => !o)}
@@ -201,6 +243,8 @@ export const TopBar = ({
               </select>
               <ChevronDown className="w-4 h-4 text-slate-400 absolute right-2.5 top-2.5 pointer-events-none" />
             </div>
+              </>
+            )}
           </div>
         </div>
       )}

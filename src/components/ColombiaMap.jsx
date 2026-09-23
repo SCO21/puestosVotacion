@@ -84,6 +84,8 @@ const Frame = ({ title, children, legend = true }) => (
 export const ColombiaMap = ({
   puestos = [], compareCandidates = [], targetCandidate = '', planillas = [],
   maxVotesGlobal = 15000, focusedPuesto = null, onSelectPuesto,
+  hasDataFn = (x) => (x.resultados || []).length > 0,   // qué cuenta como "con datos" (coloreado)
+  renderLeaf = null,                                    // render alternativo del mapa de puestos
 }) => {
   const [dept, setDept] = useState(null);
   const [muni, setMuni] = useState(null);
@@ -113,7 +115,7 @@ export const ColombiaMap = ({
     return (
       <div className="space-y-3">
         <div className="flex items-center justify-between"><Breadcrumb /><span className="text-xs text-slate-400">{list.length} puestos</span></div>
-        <MapView puestos={list} compareCandidates={compareCandidates} targetCandidate={targetCandidate} planillas={planillas} maxVotesGlobal={maxVotesGlobal} focusedPuesto={focusedPuesto} onSelectPuesto={onSelectPuesto} />
+        {renderLeaf ? renderLeaf(list) : <MapView puestos={list} compareCandidates={compareCandidates} targetCandidate={targetCandidate} planillas={planillas} maxVotesGlobal={maxVotesGlobal} focusedPuesto={focusedPuesto} onSelectPuesto={onSelectPuesto} />}
       </div>
     );
   }
@@ -127,7 +129,7 @@ export const ColombiaMap = ({
           <Breadcrumb />
           <Frame title={`${dept} — selecciona un municipio`}>
             <Choropleth features={muniGeo.features}
-              statusOf={(name) => { const l = byMuni[norm(name)] || []; return { data: l.some(x => (x.resultados || []).length > 0), count: l.length, pick: l.length > 0 }; }}
+              statusOf={(name) => { const l = byMuni[norm(name)] || []; return { data: l.some(hasDataFn), count: l.length, pick: l.length > 0 }; }}
               onPick={(name) => setMuni(name)} maxW={560} />
           </Frame>
         </div>
@@ -138,7 +140,7 @@ export const ColombiaMap = ({
     return (
       <div className="space-y-3">
         <div className="flex items-center justify-between"><Breadcrumb /><span className="text-xs text-slate-400">{list.length} puestos</span></div>
-        <MapView puestos={list} compareCandidates={compareCandidates} targetCandidate={targetCandidate} planillas={planillas} maxVotesGlobal={maxVotesGlobal} focusedPuesto={focusedPuesto} onSelectPuesto={onSelectPuesto} />
+        {renderLeaf ? renderLeaf(list) : <MapView puestos={list} compareCandidates={compareCandidates} targetCandidate={targetCandidate} planillas={planillas} maxVotesGlobal={maxVotesGlobal} focusedPuesto={focusedPuesto} onSelectPuesto={onSelectPuesto} />}
       </div>
     );
   }
@@ -147,7 +149,7 @@ export const ColombiaMap = ({
   return (
     <Frame title="Colombia — selecciona un departamento">
       <Choropleth features={depGeo.features}
-        statusOf={(name) => { const l = byDept[norm(name)] || []; return { data: l.some(x => (x.resultados || []).length > 0), count: l.length, pick: l.length > 0 }; }}
+        statusOf={(name) => { const l = byDept[norm(name)] || []; return { data: l.some(hasDataFn), count: l.length, pick: l.length > 0 }; }}
         onPick={(name) => setDept(name)} maxW={520} />
     </Frame>
   );
