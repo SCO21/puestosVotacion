@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup, Tooltip, useMap } from 'react-leaflet';
 import { CARTO_DARK_URL, CARTO_ATTRIBUTION } from '../../utils/basemap';
-import { MapPin, UserCog, Users, Target } from 'lucide-react';
+import { MapPin, UserCog, Users, Target, Search, X, UserSearch } from 'lucide-react';
 import { useEstructura, ESTADOS, ESTADO_ORDEN, fmtN } from '../../hooks/useEstructura';
 import { ProyeccionInput } from './ProyeccionInput';
 
@@ -15,6 +15,10 @@ const mix = (a, b, t) => {
   const pa = [1, 3, 5].map(i => parseInt(a.slice(i, i + 2), 16)), pb = [1, 3, 5].map(i => parseInt(b.slice(i, i + 2), 16));
   return '#' + pa.map((v, i) => Math.round(v + (pb[i] - v) * Math.max(0, Math.min(1, t))).toString(16).padStart(2, '0')).join('');
 };
+
+const MapBridge = ({ mapRef }) => { mapRef.current = useMap(); return null; };
+
+const norm = (t) => (t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 
 export const COLOR_BY = [
   { id: 'estado', label: 'Asignación (según Excel)' },
@@ -30,7 +34,55 @@ const Persona = ({ p }) => (
 );
 
 export const StructureMapView = ({ puestos = [], colorBy = 'estado', focusedPuesto }) => {
-  const { resumen } = useEstructura();
+  const { resumen, personas } = useEstructura();
+  const mapRef = useRef(null);
+  const markerRefs = useRef({});
+  const [q, setQ] = useState('');
+  const [sel, setSel] = useState(null);      // nombre de la persona seleccionada
+  const [openSug, setOpenSug] = useState(false);
+
+  // Índice persona -> puestos donde aparece en el Excel
+  const indice = useMemo(() => {
+    const m = new Map();
+    personas.forEach(p => {
+      const x = m.get(p.nombre) || { nombre: p.nombre, asignaciones: [], roles: new Set(), referentes: new Set() };
+      x.asignaciones.push({ puestoId: p.puestoId, rol: p.rol });
+      x.roles.add(p.rol); if (p.referente) x.referentes.add(p.referente);
+      m.set(p.nombre, x);
+    });
+    return m;
+  }, [personas]);
+
+  const sugerencias = useMemo(() => {
+    const t = norm(q); if (!t) return [];
+    return [...indice.values()]
+      .filter(x => norm(x.nombre).includes(t) || [...x.referentes].some(r => norm(r).includes(t)))
+      .sort((a, b) => (norm(a.nombre).startsWith(t) ? 0 : 1) - (norm(b.nombre).startsWith(t) ? 0 : 1) || a.nombre.localeCompare(b.nombre))
+      .slice(0, 10);
+  }, [q, indice]);
+
+  const persona = sel ? indice.get(sel) : null;
+  const selIds = useMemo(() => new Set(persona ? persona.asignaciones.map(a => a.puestoId) : []), [persona]);
+  const visibles = useMemo(() => new Set(puestos.map(p => p.puesto_id)), [puestos]);
+
+  const elegir = (nombre) => { setSel(nombre); setQ(nombre); setOpenSug(false); };
+  const limpiar = () => { setSel(null); setQ(''); };
+
+  // Encuadrar el mapa en los puestos de la persona
+  useEffect(() => {
+    const map = mapRef.current; if (!map || !persona) return;
+    const pts = puestos.filter(p => selIds.has(p.puesto_id) && p.lat && p.lng).map(p => [p.lat, p.lng]);
+    if (pts.length === 1) map.flyTo(pts[0], 15, { duration: 1 });
+    else if (pts.length > 1) map.flyToBounds(pts, { padding: [70, 70], maxZoom: 15, duration: 1 });
+  }, [persona, selIds, puestos]);
+
+  const irAPuesto = (pid) => {
+    const p = puestos.find(x => x.puesto_id === pid); const map = mapRef.current;
+    if (!p || !map) return;
+    map.flyTo([p.lat, p.lng], 16, { duration: 0.8 });
+    setTimeout(() => markerRefs.current[pid]?.openPopup(), 850);
+  };
+
   const maxInscritos = useMemo(() => Math.max(1, ...puestos.map(p => resumen[p.puesto_id]?.inscritos || 0)), [puestos, resumen]);
   const maxProy = useMemo(() => Math.max(1, ...puestos.map(p => resumen[p.puesto_id]?.proyectado || 0)), [puestos, resumen]);
 
@@ -61,18 +113,87 @@ export const StructureMapView = ({ puestos = [], colorBy = 'estado', focusedPues
         <div className="pt-1 text-[10px] text-slate-500 border-t border-slate-800">* Tamaño del punto = inscritos</div>
       </div>
 
+      {/* Buscador de líderes / coordinadores */}
+      <div className="absolute top-3 right-3 z-[1000] w-80 max-w-[calc(100%-4rem)] space-y-2">
+        <div className="relative">
+          <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+          <input value={q} onChange={e => { setQ(e.target.value); setOpenSug(true); if (sel) setSel(null); }}
+            onFocus={() => setOpenSug(true)} onBlur={() => setTimeout(() => setOpenSug(false), 150)}
+            onKeyDown={e => { if (e.key === 'Enter' && sugerencias[0]) elegir(sugerencias[0].nombre); if (e.key === 'Escape') limpiar(); }}
+            placeholder="Buscar líder o coordinador…"
+            className="w-full bg-slate-900/95 border border-slate-700 text-slate-100 text-sm rounded-xl pl-9 pr-8 py-2 placeholder:text-slate-500 focus:outline-none focus:border-emerald-500 shadow-xl backdrop-blur-md" />
+          {q && <button onClick={limpiar} className="absolute right-2.5 top-2.5 text-slate-400 hover:text-white"><X className="w-4 h-4" /></button>}
+          {openSug && !sel && q.trim() && (
+            <div className="absolute mt-1 w-full bg-slate-900/95 border border-slate-700 rounded-xl shadow-2xl overflow-hidden max-h-72 overflow-y-auto backdrop-blur-md">
+              {sugerencias.length === 0 && <div className="px-3 py-2 text-xs text-slate-500">Nadie con ese nombre en el Excel.</div>}
+              {sugerencias.map(x => (
+                <button key={x.nombre} onMouseDown={e => e.preventDefault()} onClick={() => elegir(x.nombre)}
+                  className="w-full text-left px-3 py-2 hover:bg-slate-800 border-b border-slate-800 last:border-0">
+                  <div className="text-sm text-white font-semibold">{x.nombre}</div>
+                  <div className="text-[10px] text-slate-400">
+                    {[...x.roles].map(r => r === 'coordinador' ? 'Coordinador' : 'Líder').join(' / ')} · {x.asignaciones.length} puesto{x.asignaciones.length > 1 ? 's' : ''}
+                    {x.referentes.size > 0 && <span className="text-violet-300"> · ref. {[...x.referentes].join(', ')}</span>}
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {persona && (
+          <div className="bg-slate-900/95 border border-emerald-600/50 rounded-xl shadow-2xl backdrop-blur-md overflow-hidden">
+            <div className="px-3 py-2 border-b border-slate-800 flex items-start justify-between gap-2">
+              <div className="min-w-0">
+                <div className="text-sm font-bold text-white flex items-center gap-1.5"><UserSearch className="w-4 h-4 text-emerald-400 shrink-0" />{persona.nombre}</div>
+                <div className="text-[10px] text-slate-400">
+                  {[...persona.roles].map(r => r === 'coordinador' ? 'Coordinador' : 'Líder').join(' / ')}
+                  {persona.referentes.size > 0 && <span className="text-violet-300"> · ref. {[...persona.referentes].join(', ')}</span>}
+                </div>
+              </div>
+              <button onClick={limpiar} className="text-slate-400 hover:text-white shrink-0"><X className="w-4 h-4" /></button>
+            </div>
+            <div className="max-h-64 overflow-y-auto divide-y divide-slate-800">
+              {persona.asignaciones.map((a, i) => {
+                const r = resumen[a.puestoId]; const vis = visibles.has(a.puestoId);
+                return (
+                  <button key={i} onClick={() => vis && irAPuesto(a.puestoId)} disabled={!vis}
+                    className={`w-full text-left px-3 py-2 ${vis ? 'hover:bg-slate-800' : 'opacity-50 cursor-not-allowed'}`}>
+                    <div className="text-xs text-white font-semibold">{r?.nombre || a.puestoId}</div>
+                    <div className="text-[10px] text-slate-400">
+                      <span className="text-cyan-300">{a.puestoId}</span> · {a.rol === 'coordinador' ? 'Coordinador' : 'Líder'} · {fmtN(r?.inscritos)} inscritos
+                      {!vis && <span className="text-amber-300"> · oculto por filtros</span>}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+            <div className="px-3 py-1.5 text-[10px] text-slate-400 border-t border-slate-800 flex justify-between">
+              <span>{persona.asignaciones.length} puesto{persona.asignaciones.length > 1 ? 's' : ''}</span>
+              <span>Inscritos: <b className="text-white">{fmtN(persona.asignaciones.reduce((a, x) => a + (resumen[x.puestoId]?.inscritos || 0), 0))}</b></span>
+            </div>
+          </div>
+        )}
+      </div>
+
       <MapContainer center={[10.3997, -75.5144]} zoom={12} scrollWheelZoom className="w-full h-full z-10">
         <FlyTo focused={focusedPuesto} />
+        <MapBridge mapRef={mapRef} />
         <TileLayer attribution={CARTO_ATTRIBUTION} url={CARTO_DARK_URL} maxZoom={19} />
         {puestos.map(p => {
           const r = resumen[p.puesto_id]; if (!r || !p.lat || !p.lng) return null;
           const col = colorOf(r);
           const radius = 7 + Math.round(15 * Math.sqrt((r.inscritos || 0) / maxInscritos));
           const isF = focusedPuesto && focusedPuesto.puesto_id === p.puesto_id;
+          const isSel = selIds.has(p.puesto_id);
+          const dim = persona && !isSel;
           const [zona, pto] = p.puesto_id.split('-');
           return (
-            <CircleMarker key={p.puesto_id} center={[p.lat, p.lng]} radius={isF ? radius + 5 : radius}
-              pathOptions={{ color: isF ? '#38bdf8' : col, fillColor: col, fillOpacity: 0.8, weight: isF ? 4 : 1.5 }}>
+            <CircleMarker key={p.puesto_id} ref={el => { if (el) markerRefs.current[p.puesto_id] = el; }}
+              center={[p.lat, p.lng]} radius={isF || isSel ? radius + 5 : radius}
+              pathOptions={{
+                color: isSel ? '#ffffff' : isF ? '#38bdf8' : col, fillColor: col,
+                fillOpacity: dim ? 0.12 : 0.8, opacity: dim ? 0.25 : 1, weight: isSel ? 3.5 : isF ? 4 : 1.5,
+              }}>
               <Tooltip direction="top" offset={[0, -radius]} opacity={0.95} sticky>
                 <div className="text-xs font-semibold text-slate-100">
                   {r.nombre}
